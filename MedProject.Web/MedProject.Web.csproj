@@ -196,12 +196,14 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="ui\.eslintrc.js" />
-    <Content Include="ui\.gitignore" />
     <Content Include="ui\babel.config.js" />
-    <Content Include="ui\src\assets\logo.png" />
+    <Content Include="ui\src\components\query-bar\query-bar.store.js" />
+    <Content Include="ui\src\filters\capitalize.filter.js" />
+    <Content Include="ui\src\filters\index.js" />
     <Content Include="ui\src\main.js" />
     <Content Include="ui\src\router\index.js" />
     <Content Include="ui\src\store\index.js" />
+    <Content Include="ui\vue.config.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -220,13 +222,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="ui\src\App.vue" />
-    <Content Include="ui\src\components\HelloWorld.vue" />
-    <Content Include="ui\src\views\About.vue" />
-    <Content Include="ui\src\views\Home.vue" />
+    <Content Include="ui\.browserslistrc" />
+    <Content Include="ui\.env" />
     <Content Include="ui\package-lock.json" />
     <Content Include="ui\package.json" />
-    <Content Include="ui\.browserslistrc" />
+    <Content Include="ui\src\app.scss" />
+    <Content Include="ui\src\App.vue" />
+    <Content Include="ui\src\components\AppLoader.vue" />
+    <Content Include="ui\src\components\query-bar\AppQueryBar.vue" />
+    <Content Include="ui\src\components\query-bar\filters\AppInputFilter.vue" />
+    <Content Include="ui\src\components\table\AppPagination.vue" />
+    <Content Include="ui\src\components\table\AppTable.vue" />
+    <Content Include="ui\src\core\NavBar.vue" />
+    <Content Include="ui\src\views\Home.vue" />
+    <Content Include="ui\src\views\patients\PatientList.vue" />
+    <Content Include="ui\src\views\pharmacies\PharmacyList.vue" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MedProject.BusinessLogic\MedProject.BusinessLogic.csproj">
