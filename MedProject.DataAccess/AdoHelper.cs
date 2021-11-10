@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace MedProject.DataAccess
 {
-    internal class AdoHelper
+    internal static class AdoHelper
     {
-        private string ConnectionString { get; set; }
+        private static string ConnectionString { get; set; }
 
-        public AdoHelper()
+        static AdoHelper()
         {
             // TODO: take out name to IoC string ('Default')
-            this.ConnectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+            AdoHelper.ConnectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
         }
 
-        public async Task<IList<T>> GetListByProcAsync<T>(string procName)
+        public static async Task<IList<T>> GetListByProcAsync<T>(string procName)
         {
-            using (SqlConnection con = new SqlConnection(this.ConnectionString))
+            using (SqlConnection con = new SqlConnection(AdoHelper.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand(procName, con))
                 {
@@ -27,12 +27,12 @@ namespace MedProject.DataAccess
 
                     con.Open();
                     var reader = await cmd.ExecuteReaderAsync();
-                    return await this.ReadData<T>(reader);
+                    return await AdoHelper.ReadData<T>(reader);
                 }
             }
         }
 
-        private async Task<IList<T>> ReadData<T>(SqlDataReader reader)
+        private static async Task<IList<T>> ReadData<T>(SqlDataReader reader)
         {
             var res = new List<T>();
 

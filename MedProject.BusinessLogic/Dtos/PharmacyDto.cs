@@ -1,6 +1,6 @@
-﻿namespace MedProject.Web.Resources
+﻿namespace MedProject.BusinessLogic.Dtos
 {
-    public class PharmacyRes
+    public class PharmacyDto
     {
         public int Id { get; set; }
 

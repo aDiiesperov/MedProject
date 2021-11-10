@@ -9,7 +9,6 @@ namespace MedProject.DataAccess
         public static void Register(ContainerBuilder builder)
         {
             builder.RegisterType<PharmacyRepository>().As<IPharmacyRepository>();
-            builder.RegisterType<AdoHelper>();
         }
     }
 }

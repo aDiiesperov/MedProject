@@ -23,7 +23,7 @@ namespace MedProject.Web
             builder.RegisterWebApiModelBinderProvider();
 
             // Register DataAccess services
-            DataAccess.Registrator.Register(builder);
+            BusinessLogic.Registrator.Register(builder);
 
             var container = builder.Build();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);

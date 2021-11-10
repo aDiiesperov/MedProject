@@ -179,11 +179,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Home\HomeController.cs" />
     <Compile Include="Controllers\Pharmacy\PharmacyController.cs" />
-    <Compile Include="Controllers\Pharmacy\PharmacyMapper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Resources\PharmacyRes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -241,10 +239,6 @@
     <ProjectReference Include="..\MedProject.BusinessLogic\MedProject.BusinessLogic.csproj">
       <Project>{308fad25-fa80-4fab-9040-192d1599a7bf}</Project>
       <Name>MedProject.BusinessLogic</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MedProject.DataAccess\MedProject.DataAccess.csproj">
-      <Project>{00f87c74-93b9-4850-8a23-17844f4c1409}</Project>
-      <Name>MedProject.DataAccess</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

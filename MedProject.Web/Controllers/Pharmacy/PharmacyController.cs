@@ -1,5 +1,4 @@
-﻿using MedProject.DataAccess.Interfaces;
-using System.Linq;
+﻿using MedProject.BusinessLogic.Interfaces;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -7,18 +6,17 @@ namespace MedProject.Web.Controllers.Pharmacy
 {
     public class PharmacyController : ApiController
     {
-        private readonly IPharmacyRepository pharmacyRepository;
+        private readonly IPharmacyService pharmacyService;
 
-        public PharmacyController(IPharmacyRepository pharmacyRepository)
+        public PharmacyController(IPharmacyService pharmacyService)
         {
-            this.pharmacyRepository = pharmacyRepository;
+            this.pharmacyService = pharmacyService;
         }
 
         public async Task<IHttpActionResult> Get()
         {
-            var list = await this.pharmacyRepository.GetAllAsync();
-            var listRes = list.Select(p => p.MapToPharmacyRes());
-            return this.Ok(listRes);
+            var list = await this.pharmacyService.GetListAsync();
+            return this.Ok(list);
         }
     }
 }
