@@ -187,12 +187,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="dist\chunk-2d221c72ee8710bfebc66a7aa0e1.js" />
-    <Content Include="dist\chunk-5e7b6a0227ac920749215f3dbe1e.css" />
-    <Content Include="dist\chunk-5e7b6a0227ac920749215f3dbe1e.js" />
-    <Content Include="dist\index.html" />
-    <Content Include="dist\vue.css" />
-    <Content Include="dist\vue.js" />
+    <Content Include="dist\css\0.css" />
+    <Content Include="dist\css\vue.css" />
+    <Content Include="dist\js\0.js" />
+    <Content Include="dist\js\1.js" />
+    <Content Include="dist\js\vue.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="ui\.eslintrc.js" />
