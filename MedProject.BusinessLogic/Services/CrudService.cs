@@ -18,6 +18,7 @@ namespace MedProject.BusinessLogic.Services
             this.repository = repository;
         }
 
+        // TODO: Temporary solition
         protected abstract TDto MapToDto(TDb model);
 
         public async Task<IList<TDto>> GetListAsync()

@@ -5,6 +5,6 @@ namespace MedProject.DataAccess.Repositories
 {
     internal class PharmacyRepository : Repository<Pharmacy>, IPharmacyRepository
     {
-        protected override string nameGetProc { get; set; } = "GetAllPharmacies";
+        protected override string nameGetProc => "GetAllPharmacies";
     }
 }

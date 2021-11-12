@@ -44,8 +44,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="StoredProcedures\GetAllPharmacies.sql" />
-    <Content Include="Tables\Pharmacies.sql" />
+    <Content Include="Patient\StoredProcedures\GetAllPatients.sql" />
+    <Content Include="Patient\Tables\Patients.sql" />
+    <Content Include="Pharmacy\StoredProcedures\GetAllPharmacies.sql" />
+    <Content Include="Pharmacy\Tables\Pharmacies.sql" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

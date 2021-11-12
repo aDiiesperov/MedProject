@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using System.Web.Http;
 
-namespace MedProject.Web.Controllers.Pharmacy
+namespace MedProject.Web.Controllers
 {
     public class PharmacyController : ApiController
     {

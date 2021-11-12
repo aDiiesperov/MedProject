@@ -66,13 +66,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\PatientDto.cs" />
     <Compile Include="Dtos\PharmacyDto.cs" />
     <Compile Include="Interfaces\ICrudService.cs" />
+    <Compile Include="Interfaces\IPatientService.cs" />
     <Compile Include="Interfaces\IPharmacyService.cs" />
+    <Compile Include="Mappers\PatientMapper.cs" />
     <Compile Include="Mappers\PharmacyMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registrator.cs" />
     <Compile Include="Services\CrudService.cs" />
+    <Compile Include="Services\PatientService.cs" />
     <Compile Include="Services\PharmacyService.cs" />
   </ItemGroup>
   <ItemGroup>

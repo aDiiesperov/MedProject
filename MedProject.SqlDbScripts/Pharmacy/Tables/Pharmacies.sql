@@ -4,5 +4,5 @@
 	StateCode CHAR(2) NOT NULL,
 	Address VARCHAR(100) NOT NULL,
 	Email VARCHAR(100),
-	Phone BIGINT,
-)
+	Phone BIGINT
+);

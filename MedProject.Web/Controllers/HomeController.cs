@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace MedProject.Web.Controllers.Home
+namespace MedProject.Web.Controllers
 {
     public class HomeController : Controller
     {

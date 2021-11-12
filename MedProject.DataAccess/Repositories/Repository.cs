@@ -6,7 +6,7 @@ namespace MedProject.DataAccess.Repositories
 {
     internal abstract class Repository<T> : IRepository<T> where T : class
     {
-        protected abstract string nameGetProc { get; set; }
+        protected abstract string nameGetProc { get; }
 
         public async Task<IList<T>> GetAllAsync()
         {
