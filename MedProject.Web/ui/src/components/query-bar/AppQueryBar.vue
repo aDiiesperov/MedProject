@@ -13,7 +13,14 @@
         />
       </template>
 
-      <template v-else-if="config.type === 'dropdown'"> dropdown </template>
+      <template v-else-if="config.type === 'dropdown'">
+        <app-dropdown-filter
+          :filterKey="config.filterKey"
+          :label="config.label"
+          :placeholder="config.placeholder"
+          :items="config.items"
+        />
+      </template>
 
       <template v-else>Filters isn't supported!</template>
     </div>
@@ -22,9 +29,11 @@
 
 <script>
 import AppInputFilter from "./filters/AppInputFilter.vue";
+import AppDropdownFilter from "./filters/AppDropdownFilter.vue";
+import { actions as $A } from "@store/types";
 
 export default {
-  components: { AppInputFilter },
+  components: { AppInputFilter, AppDropdownFilter },
   props: ["configs"],
   created() {
     // TODO: add query params for querybar
@@ -32,7 +41,7 @@ export default {
     console.log(query);
   },
   destroyed() {
-    this.$store.dispatch("queryBarStore/resetFilters");
+    this.$store.dispatch($A.QUERY_BAR_RESET_FILTERS);
   },
 };
 </script>

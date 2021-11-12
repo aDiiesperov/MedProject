@@ -28,7 +28,11 @@
             :key="config.name"
             :style="{ width: config.width + 'px' }"
           >
-            {{ item[config.prop] }}
+            <p v-if="config.type === 'date'">
+              {{ item[config.prop] | formatDate }}
+            </p>
+
+            <p v-else>{{ item[config.prop] }}</p>
           </td>
         </tr>
       </tbody>
@@ -60,12 +64,15 @@ export default {
   },
   computed: {
     currentItems() {
+      if (!this.data?.length) return [];
       const startPos = (this.page - 1) * this.pageSize;
       const data = orderBy(this.data, [this.sortBy], [this.sortDir]);
       return data.slice(startPos, startPos + this.pageSize);
     },
     totalPages() {
-      return Math.ceil(this.data.length / this.pageSize);
+      return this.data?.length
+        ? Math.ceil(this.data.length / this.pageSize)
+        : 0;
     },
   },
   methods: {

@@ -1,5 +1,5 @@
 <template>
-  <nav v-if="totalPages > 0">
+  <nav v-if="totalPages > 1">
     <ul class="pagination justify-content-end">
       <li class="page-item" :class="{ disabled: curPage === 1 }">
         <button class="page-link" @click="prevPage()">

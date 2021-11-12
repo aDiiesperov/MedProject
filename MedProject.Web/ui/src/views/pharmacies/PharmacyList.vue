@@ -8,22 +8,16 @@
 
 <script>
 import { mapGetters } from "vuex";
-import axios from "axios";
-import AppTable from "../../components/table/AppTable.vue";
-import AppQueryBar from "../../components/query-bar/AppQueryBar.vue";
-import AppLoader from "../../components/AppLoader.vue";
+import { actions as $A, getters as $G } from "@store/types";
+import AppTable from "@components/table/AppTable.vue";
+import AppQueryBar from "@components/query-bar/AppQueryBar.vue";
+import AppLoader from "@components/AppLoader.vue";
 
 export default {
   components: {
     AppTable,
     AppQueryBar,
     AppLoader,
-  },
-  mounted() {
-    axios
-      .get(`${process.env.VUE_APP_API_URL}/pharmacy`)
-      .then((response) => (this.data = response.data))
-      .finally(() => (this.isLoading = false));
   },
   data: () => ({
     queryBarConfig: [
@@ -48,17 +42,28 @@ export default {
         prop: "Phone",
         name: "Contact Phone",
         width: 550,
+        sortable: true,
       },
     ],
-    data: [],
     isLoading: true,
   }),
   computed: {
     ...mapGetters({
-      filterData: "queryBarStore/filterData",
+      pharmacies: $G.PHARMACY_LIST,
+      filterData: $G.QUERY_BAR_FILTER_DATA,
     }),
     filteredData() {
-      return this.filterData(this.data);
+      return this.filterData(this.pharmacies);
+    },
+  },
+  mounted() {
+    this.loadList();
+  },
+  methods: {
+    loadList() {
+      this.$store
+        .dispatch($A.PHARMACY_LOAD_LIST)
+        .finally(() => (this.isLoading = false));
     },
   },
 };

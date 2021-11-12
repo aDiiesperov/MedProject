@@ -11,12 +11,19 @@
 </template>
 
 <script>
+import { TYPE_FILTER } from "../constants/type-filter";
+import { actions as $A } from "@store/types";
+
 export default {
   props: ["filterKey", "label", "placeholder"],
   methods: {
     onInput(value) {
-      const filter = { filterKey: this.filterKey, value };
-      this.$store.dispatch("queryBarStore/applyFilter", filter);
+      const filter = {
+        type: TYPE_FILTER.INPUT,
+        filterKey: this.filterKey,
+        value,
+      };
+      this.$store.dispatch($A.QUERY_BAR_APPLY_FILTER, filter);
     },
   },
 };
