@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedProject.DataAccess", "Me
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedProject.BusinessLogic", "MedProject.BusinessLogic\MedProject.BusinessLogic.csproj", "{308FAD25-FA80-4FAB-9040-192D1599A7BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedProject.SqlDbScripts", "MedProject.SqlDbScripts\MedProject.SqlDbScripts.csproj", "{5126EB59-2CF8-40D2-B323-1ECDE441C0B6}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "MedProject.SqlDbScripts", "MedProject.SqlDbScripts\MedProject.SqlDbScripts.sqlproj", "{A7875C90-652D-4430-ACBC-EDDAD5ECFEF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,12 @@ Global
 		{308FAD25-FA80-4FAB-9040-192D1599A7BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{308FAD25-FA80-4FAB-9040-192D1599A7BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{308FAD25-FA80-4FAB-9040-192D1599A7BF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5126EB59-2CF8-40D2-B323-1ECDE441C0B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5126EB59-2CF8-40D2-B323-1ECDE441C0B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5126EB59-2CF8-40D2-B323-1ECDE441C0B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5126EB59-2CF8-40D2-B323-1ECDE441C0B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7875C90-652D-4430-ACBC-EDDAD5ECFEF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7875C90-652D-4430-ACBC-EDDAD5ECFEF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7875C90-652D-4430-ACBC-EDDAD5ECFEF1}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{A7875C90-652D-4430-ACBC-EDDAD5ECFEF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7875C90-652D-4430-ACBC-EDDAD5ECFEF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7875C90-652D-4430-ACBC-EDDAD5ECFEF1}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
