@@ -8,7 +8,6 @@ const routes = [
   // TODO: future features: add some auth guard
   {
     path: "/",
-    name: "Home",
     component: Home,
     children: [
       {
@@ -17,24 +16,22 @@ const routes = [
       },
       {
         path: "patients",
-        component: () => import("@/views/patients/PatientList"),
+        component: () => import("@views/patients/PatientList"),
       },
       {
         path: "pharmacies",
-        component: () => import("@/views/pharmacies/PharmacyList"),
+        component: () => import("@views/pharmacies/PharmacyList"),
       },
     ],
   },
-  // TODO: future features: we can add other pages here like error, no-access and so on
-  // {
-  //   path: '/:catchAll(.*)',
-  //   redirect: { path: "error" },
-  // }
-  // {
-  //   path: "error",
-  //   name: "Error",
-  //   component: () => import("../views/Error.vue"),
-  // },
+  {
+    path: "/error",
+    component: () => import("@views/Error"),
+  },
+  {
+    path: "/:catchAll(.*)",
+    redirect: { path: "error" },
+  },
 ];
 
 const router = new VueRouter({

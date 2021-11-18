@@ -1,7 +1,7 @@
 <template>
   <div>
     <table class="table table-hover table-striped">
-      <thead>
+      <thead class="text-center">
         <tr>
           <th
             v-for="config in configs"
@@ -24,6 +24,7 @@
       <tbody>
         <tr v-for="item in currentItems" :key="item.id">
           <td
+            class="px-3"
             v-for="config in configs"
             :key="config.name"
             :style="{ width: config.width + 'px' }"
