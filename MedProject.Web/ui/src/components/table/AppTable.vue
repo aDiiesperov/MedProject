@@ -49,6 +49,7 @@
 <script>
 import AppPagination from "./AppPagination.vue";
 import { orderBy } from "lodash";
+import { QueryHelper } from "@/helpers";
 
 export default {
   components: { AppPagination },
@@ -69,7 +70,7 @@ export default {
     pageSize: 10,
   }),
   created() {
-    this.page = +this.$route.query.page || 1;
+    this.setupParams();
   },
   computed: {
     currentItems() {
@@ -85,9 +86,14 @@ export default {
     },
   },
   methods: {
+    setupParams() {
+      this.page = +this.$route.query.page || 1;
+      this.sortBy = this.$route.query.sortBy;
+      this.sortDir = this.$route.query.sortDir;
+    },
     pageChanged(page) {
-      // TODO: this page is needed to append to query
       this.page = page;
+      QueryHelper.updateQuery(this.$route, this.$router, { page: +page || 1 });
     },
     onSort(prop) {
       if (this.sortBy === prop) {
@@ -96,6 +102,8 @@ export default {
         this.sortBy = prop;
         this.sortDir = "asc";
       }
+      const newParams = { sortBy: this.sortBy, sortDir: this.sortDir };
+      QueryHelper.updateQuery(this.$route, this.$router, newParams);
     },
   },
 };
