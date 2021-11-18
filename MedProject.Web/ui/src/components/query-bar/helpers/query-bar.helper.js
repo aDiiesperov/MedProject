@@ -6,7 +6,7 @@ export class QueryBarHelper {
       var filteredData = data;
 
       for (var filter of filters) {
-        filteredData = InnerHelper.filterData(filteredData, filter);
+        filteredData = filterDataByFilter(filteredData, filter);
       }
 
       return filteredData;
@@ -15,29 +15,27 @@ export class QueryBarHelper {
   }
 }
 
-class InnerHelper {
-  static filterData(data, filter) {
-    if (filter.manualHandling) return data;
+function filterDataByFilter(data, filter) {
+  if (filter.manualHandling) return data;
 
-    switch (filter.type) {
-      case TYPE_FILTER.INPUT:
-        return InnerHelper.filterInput(data, filter);
-      case TYPE_FILTER.DROPDOWN:
-        return InnerHelper.filterDropdown(data, filter);
-      default:
-        return data;
-    }
+  switch (filter.type) {
+    case TYPE_FILTER.INPUT:
+      return filterInput(data, filter);
+    case TYPE_FILTER.DROPDOWN:
+      return filterDropdown(data, filter);
+    default:
+      return data;
   }
+}
 
-  static filterInput(data, filter) {
-    const filterValue = filter.value.toLowerCase();
-    return data.filter((d) =>
-      d[filter.filterKey].toLowerCase().includes(filterValue)
-    );
-  }
+function filterInput(data, filter) {
+  const filterValue = filter.value.toLowerCase();
+  return data.filter((d) =>
+    d[filter.filterKey].toLowerCase().includes(filterValue)
+  );
+}
 
-  // Drodpowns has manual handling now. It's for future filters.
-  static filterDropdown(data) {
-    return data;
-  }
+// Drodpowns has manual handling now. It's for future filters.
+function filterDropdown(data) {
+  return data;
 }
