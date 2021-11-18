@@ -1,4 +1,4 @@
-import { QueryBarHelper } from "@/components/query-bar";
+import { QueryBarHelper } from "@/helpers/query-bar.helper";
 import { getters as $G, actions as $A, mutations as $M } from "../types";
 
 const state = () => ({

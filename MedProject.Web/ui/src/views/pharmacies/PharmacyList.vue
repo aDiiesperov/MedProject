@@ -12,7 +12,7 @@ import { actions as $A, getters as $G } from "@store/types";
 import AppTable from "@components/table/AppTable.vue";
 import AppQueryBar from "@components/query-bar/AppQueryBar.vue";
 import AppLoader from "@components/AppLoader.vue";
-import { TYPE_FILTER } from "@/components/query-bar/constants/type-filter";
+import { TYPE_FILTER } from "@/helpers/query-bar.helper";
 
 export default {
   components: {

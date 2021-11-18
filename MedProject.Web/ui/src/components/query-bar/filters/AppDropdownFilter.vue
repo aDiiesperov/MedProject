@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { TYPE_FILTER } from "../constants/type-filter";
+import { TYPE_FILTER } from "@/helpers/query-bar.helper";
 import { actions as $A } from "@store/types";
 
 export default {

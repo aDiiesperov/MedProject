@@ -1,4 +1,7 @@
-import { TYPE_FILTER } from "../constants/type-filter";
+export const TYPE_FILTER = {
+  INPUT: "input",
+  DROPDOWN: "dropdown",
+};
 
 export class QueryBarHelper {
   static filterData(data, filters) {
