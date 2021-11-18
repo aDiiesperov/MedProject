@@ -27,7 +27,16 @@
 
 <script>
 export default {
-  props: ["curPage", "totalPages"],
+  props: {
+    curPage: {
+      type: Number,
+      required: true,
+    },
+    totalPages: {
+      type: Number,
+      required: true,
+    },
+  },
   methods: {
     changePage(page) {
       this.$emit("pageChanged", page);

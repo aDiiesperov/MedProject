@@ -1,4 +1,4 @@
-import { TYPE_FILTER } from "./constants/type-filter";
+import { TYPE_FILTER } from "../constants/type-filter";
 
 export class QueryBarHelper {
   static filterData(data, filters) {

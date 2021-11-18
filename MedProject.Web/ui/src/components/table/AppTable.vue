@@ -52,7 +52,16 @@ import { orderBy } from "lodash";
 
 export default {
   components: { AppPagination },
-  props: ["configs", "data"],
+  props: {
+    configs: {
+      typeof: Array,
+      required: true,
+    },
+    data: {
+      typeof: Array,
+      required: true,
+    },
+  },
   data: () => ({
     sortBy: "",
     sortDir: "",
@@ -93,12 +102,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+table,
+thead,
+tbody {
+  display: flex;
+  flex-direction: column;
+}
+
+tr {
+  display: flex;
+}
+
 th {
   vertical-align: middle;
 }
+
 p {
   margin-bottom: 0px;
 }
+
 .sortable {
   cursor: pointer;
   padding-right: 20px;

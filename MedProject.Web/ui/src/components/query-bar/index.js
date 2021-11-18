@@ -1,1 +1,1 @@
-export { QueryBarHelper } from "./query-bar.helper";
+export { QueryBarHelper } from "./helpers/query-bar.helper";

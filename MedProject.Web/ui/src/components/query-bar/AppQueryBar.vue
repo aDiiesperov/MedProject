@@ -6,20 +6,11 @@
       :key="config.filterKey"
     >
       <template v-if="config.type === 'input'">
-        <app-input-filter
-          :filterKey="config.filterKey"
-          :label="config.label"
-          :placeholder="config.placeholder"
-        />
+        <app-input-filter :config="config" />
       </template>
 
       <template v-else-if="config.type === 'dropdown'">
-        <app-dropdown-filter
-          :filterKey="config.filterKey"
-          :label="config.label"
-          :placeholder="config.placeholder"
-          :items="config.items"
-        />
+        <app-dropdown-filter :config="config" />
       </template>
 
       <template v-else>Filters isn't supported!</template>
@@ -34,9 +25,14 @@ import { actions as $A } from "@store/types";
 
 export default {
   components: { AppInputFilter, AppDropdownFilter },
-  props: ["configs"],
+  props: {
+    configs: {
+      type: Array,
+      required: true,
+    },
+  },
   created() {
-    // TODO: add query params for querybar
+    // TODO: add query params for querybar (it isn't a requirement)
     const query = this.$route.query;
     console.log(query);
   },

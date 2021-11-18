@@ -4,7 +4,7 @@ import router from "./router";
 import store from "./store";
 import "./filters/index";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import "./app.scss";
+import "./index.scss";
 
 Vue.config.productionTip = false;
 

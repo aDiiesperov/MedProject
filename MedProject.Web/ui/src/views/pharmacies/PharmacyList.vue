@@ -12,6 +12,7 @@ import { actions as $A, getters as $G } from "@store/types";
 import AppTable from "@components/table/AppTable.vue";
 import AppQueryBar from "@components/query-bar/AppQueryBar.vue";
 import AppLoader from "@components/AppLoader.vue";
+import { TYPE_FILTER } from "@/components/query-bar/constants/type-filter";
 
 export default {
   components: {
@@ -22,7 +23,7 @@ export default {
   data: () => ({
     queryBarConfig: [
       {
-        type: "input",
+        type: TYPE_FILTER.INPUT,
         filterKey: "Name",
         label: "Name",
         placeholder: "Search...",

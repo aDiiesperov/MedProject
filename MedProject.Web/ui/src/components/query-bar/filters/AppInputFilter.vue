@@ -1,11 +1,14 @@
 <template>
   <div class="input-group mb-3">
-    <span class="input-group-text">{{ label }}</span>
+    <label class="input-group-text" :for="'filter-' + config.filterKey">
+      {{ config.label }}
+    </label>
     <input
       @input="onInput($event.target.value)"
       type="text"
       class="form-control"
-      :placeholder="placeholder"
+      :placeholder="config.placeholder"
+      :id="'filter-' + config.filterKey"
     />
   </div>
 </template>
@@ -15,12 +18,17 @@ import { TYPE_FILTER } from "../constants/type-filter";
 import { actions as $A } from "@store/types";
 
 export default {
-  props: ["filterKey", "label", "placeholder"],
+  props: {
+    config: {
+      type: Object,
+      required: true,
+    },
+  },
   methods: {
     onInput(value) {
       const filter = {
         type: TYPE_FILTER.INPUT,
-        filterKey: this.filterKey,
+        filterKey: this.config.filterKey,
         value,
       };
       this.$store.dispatch($A.QUERY_BAR_APPLY_FILTER, filter);

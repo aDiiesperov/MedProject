@@ -13,6 +13,7 @@ import { DateHelper } from "@helpers";
 import AppTable from "@components/table/AppTable.vue";
 import AppQueryBar from "@components/query-bar/AppQueryBar.vue";
 import AppLoader from "@components/AppLoader.vue";
+import { TYPE_FILTER } from "@/components/query-bar/constants/type-filter";
 
 const DATE_FILTER_KEY = "PharmacyAssignDate";
 
@@ -25,7 +26,7 @@ export default {
   data: () => ({
     queryBarConfig: [
       {
-        type: "dropdown",
+        type: TYPE_FILTER.DROPDOWN,
         filterKey: DATE_FILTER_KEY,
         manualHandling: true,
         items: [
@@ -48,7 +49,7 @@ export default {
         sortable: true,
       },
       {
-        prop: "PharmacyAssignDate",
+        prop: DATE_FILTER_KEY,
         name: "Assign Date",
         type: "date",
         width: 400,
@@ -70,6 +71,8 @@ export default {
       if (dateFilter) {
         return this.filterByDate(this.patients, dateFilter);
       }
+
+      // we can add additional default filters at any time.
 
       return this.patients;
     },

@@ -17,12 +17,11 @@ const routes = [
       },
       {
         path: "patients",
-        // alias: "",
-        component: () => import("@/views/patients/PatientList.vue"),
+        component: () => import("@/views/patients/PatientList"),
       },
       {
         path: "pharmacies",
-        component: () => import("@/views/pharmacies/PharmacyList.vue"),
+        component: () => import("@/views/pharmacies/PharmacyList"),
       },
     ],
   },
