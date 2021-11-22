@@ -200,16 +200,16 @@
     <Content Include="ui\babel.config.js" />
     <Content Include="ui\package-lock.json" />
     <Content Include="ui\package.json" />
-    <Content Include="ui\src\app.scss" />
     <Content Include="ui\src\App.vue" />
     <Content Include="ui\src\components\AppLoader.vue" />
     <Content Include="ui\src\components\query-bar\AppQueryBar.vue" />
     <Content Include="ui\src\components\query-bar\constants\type-filter.js" />
+    <Content Include="ui\src\components\query-bar\filters\AppDropdownFilter.vue" />
     <Content Include="ui\src\components\query-bar\filters\AppInputFilter.vue" />
+    <Content Include="ui\src\components\query-bar\filters\FilterMixin.js" />
     <Content Include="ui\src\components\query-bar\helpers\query-bar.helper.js" />
-    <Content Include="ui\src\components\query-bar\index.js" />
-    <Content Include="ui\src\components\query-bar\query-bar.store.js" />
     <Content Include="ui\src\components\table\AppPagination.vue" />
+    <Content Include="ui\src\components\table\AppTable.scss" />
     <Content Include="ui\src\components\table\AppTable.vue" />
     <Content Include="ui\src\core\NavBar.vue" />
     <Content Include="ui\src\filters\capitalize.filter.js" />
@@ -217,7 +217,9 @@
     <Content Include="ui\src\filters\index.js" />
     <Content Include="ui\src\helpers\date.helper.js" />
     <Content Include="ui\src\helpers\index.js" />
+    <Content Include="ui\src\helpers\query-bar.helper.js" />
     <Content Include="ui\src\helpers\query.helper.js" />
+    <Content Include="ui\src\index.scss" />
     <Content Include="ui\src\main.js" />
     <Content Include="ui\src\router\index.js" />
     <Content Include="ui\src\services\index.js" />
@@ -228,6 +230,7 @@
     <Content Include="ui\src\store\modules\pharmacies.js" />
     <Content Include="ui\src\store\modules\query-bar.js" />
     <Content Include="ui\src\store\types.js" />
+    <Content Include="ui\src\views\Error.vue" />
     <Content Include="ui\src\views\Home.vue" />
     <Content Include="ui\src\views\patients\PatientList.vue" />
     <Content Include="ui\src\views\pharmacies\PharmacyList.vue" />
@@ -251,9 +254,6 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="ui\jsconfig.json" />
-    <Content Include="ui\src\components\query-bar\filters\AppDropdownFilter.vue" />
-    <Content Include="ui\src\components\table\AppTable.scss" />
-    <Content Include="ui\src\index.scss" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MedProject.BusinessLogic\MedProject.BusinessLogic.csproj">
