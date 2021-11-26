@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace MedProject.DataAccess.DataStores.Models
 {
@@ -10,7 +11,7 @@ namespace MedProject.DataAccess.DataStores.Models
 
             public string Name { get; set; }
 
-            // public string Date { get; set; }
+            public DateTime AssignDate { get; set; }
         }
 
         public int Id { get; set; }

@@ -14,8 +14,9 @@ import AppTable from "@components/table/AppTable.vue";
 import AppQueryBar from "@components/query-bar/AppQueryBar.vue";
 import AppLoader from "@components/AppLoader.vue";
 import { TYPE_FILTER } from "@/helpers/query-bar.helper";
+import PharmaciesCell from "./PharmaciesCell.vue";
 
-const DATE_FILTER_KEY = "PharmacyAssignDate";
+const DATE_FILTER_KEY = "AssignDate";
 
 export default {
   components: {
@@ -39,27 +40,27 @@ export default {
       },
     ],
     tableConfigs: [
-      { prop: "FirstName", name: "First Name", width: 750, sortable: true },
-      { prop: "LastName", name: "Last Name", width: 750, sortable: true },
+      { prop: "FirstName", name: "First Name", width: 700, sortable: true },
+      { prop: "LastName", name: "Last Name", width: 700, sortable: true },
       {
         prop: "StateAbbreviation",
         name: "State Code",
-        width: 400,
+        width: 350,
         sortable: true,
       },
       {
         prop: "PharmacyName",
         name: "Pharmacies",
+        component: PharmaciesCell,
         width: 1000,
-        sortable: true,
       },
       {
         name: "Refills Requested",
-        width: 800,
+        width: 700,
       },
       {
         name: "Refills Acсepted",
-        width: 800,
+        width: 700,
       },
     ],
     isLoading: true,
@@ -97,7 +98,9 @@ export default {
       if (!filter.value) return patients;
 
       const prevMonths = DateHelper.getPrevMonth(filter.value);
-      return patients.filter((d) => new Date(d[DATE_FILTER_KEY]) >= prevMonths);
+      return patients.filter((pt) =>
+        pt.Pharmacies.some((ph) => new Date(ph[DATE_FILTER_KEY]) >= prevMonths)
+      );
     },
   },
 };

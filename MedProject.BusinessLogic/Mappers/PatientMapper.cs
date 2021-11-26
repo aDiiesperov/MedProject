@@ -24,7 +24,7 @@ namespace MedProject.BusinessLogic.Mappers
             return new PatientPharmacyDto()
             {
                 Name = model.Name,
-                AssignDate = DateTime.Now, // TODO: fix later
+                AssignDate = model.AssignDate,
             };
         }
     }

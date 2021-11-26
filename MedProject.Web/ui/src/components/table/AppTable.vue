@@ -1,5 +1,5 @@
 <template>
-  <div v-if="data && data.length">
+  <div v-if="configs && configs.length">
     <table class="table table-hover table-striped">
       <thead class="text-center">
         <tr>
@@ -26,10 +26,15 @@
           <td
             class="px-3"
             v-for="config in configs"
-            :key="config.name"
+            :key="config.name || config.prop"
             :style="{ width: config.width + 'px' }"
           >
-            <p v-if="config.type === 'date'">
+            <component
+              v-if="config.component"
+              :is="config.component"
+              :item="item"
+            ></component>
+            <p v-else-if="config.type === 'date'">
               {{ item[config.prop] | formatDate }}
             </p>
 
