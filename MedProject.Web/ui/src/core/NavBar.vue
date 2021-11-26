@@ -16,7 +16,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <!-- TODO: add an autogenerator menu based on router configs -->
-          <li class="nav-item">
+          <li class="nav-item" v-role-only="'patient'">
             <router-link class="nav-link" active-class="active" to="/patients">
               Patients
             </router-link>

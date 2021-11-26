@@ -1,0 +1,14 @@
+import Vue from "vue";
+import store from "@store/index";
+import { getters as $G } from "../store/types";
+
+Vue.directive("role-only", {
+  bind: function (el, binding) {
+    const role = binding.value.toLowerCase();
+    const userRoles = store.getters[$G.AUTH_USER].roles;
+
+    if (!userRoles.some((r) => r.toLowerCase() === role)) {
+      el.style.display = "none";
+    }
+  },
+});

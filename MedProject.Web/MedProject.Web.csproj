@@ -242,15 +242,14 @@
     <Content Include="ui\src\App.vue" />
     <Content Include="ui\src\components\AppLoader.vue" />
     <Content Include="ui\src\components\query-bar\AppQueryBar.vue" />
-    <Content Include="ui\src\components\query-bar\constants\type-filter.js" />
     <Content Include="ui\src\components\query-bar\filters\AppDropdownFilter.vue" />
     <Content Include="ui\src\components\query-bar\filters\AppInputFilter.vue" />
-    <Content Include="ui\src\components\query-bar\filters\FilterMixin.js" />
-    <Content Include="ui\src\components\query-bar\helpers\query-bar.helper.js" />
     <Content Include="ui\src\components\table\AppPagination.vue" />
     <Content Include="ui\src\components\table\AppTable.scss" />
     <Content Include="ui\src\components\table\AppTable.vue" />
     <Content Include="ui\src\core\NavBar.vue" />
+    <Content Include="ui\src\directives\index.js" />
+    <Content Include="ui\src\directives\role-only.directive.js" />
     <Content Include="ui\src\filters\capitalize.filter.js" />
     <Content Include="ui\src\filters\format-date.filter.js" />
     <Content Include="ui\src\filters\index.js" />
@@ -264,9 +263,7 @@
     <Content Include="ui\src\router\index.js" />
     <Content Include="ui\src\services\auth.service.js" />
     <Content Include="ui\src\services\index.js" />
-    <Content Include="ui\src\services\patient.js" />
     <Content Include="ui\src\services\patient.service.js" />
-    <Content Include="ui\src\services\pharmacy.js" />
     <Content Include="ui\src\services\pharmacy.service.js" />
     <Content Include="ui\src\services\setupInterceptors.js" />
     <Content Include="ui\src\store\index.js" />
@@ -277,6 +274,9 @@
     <Content Include="ui\src\store\types.js" />
     <Content Include="ui\src\views\Error.vue" />
     <Content Include="ui\src\views\Home.vue" />
+    <Content Include="ui\src\views\login\Login.scss" />
+    <Content Include="ui\src\views\login\Login.vue" />
+    <Content Include="ui\src\views\medications\MedicationList.vue" />
     <Content Include="ui\src\views\patients\PatientList.vue" />
     <Content Include="ui\src\views\pharmacies\PharmacyList.vue" />
     <Content Include="ui\vue.config.js" />
@@ -294,13 +294,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="ui\src\components\query-bar\models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="ui\src\views\login\Login.scss" />
-    <Content Include="ui\src\views\login\Login.vue" />
-    <Content Include="ui\src\views\medications\MedicationList.vue" />
+    <Content Include="ui\src\views\patients\PharmaciesCell.vue" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MedProject.BusinessLogic\MedProject.BusinessLogic.csproj">

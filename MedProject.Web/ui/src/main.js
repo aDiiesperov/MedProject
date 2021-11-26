@@ -4,7 +4,8 @@ import router from "./router";
 import store from "./store";
 import { setupInterceptors } from "./services/setupInterceptors";
 
-import "./filters/index";
+import "./filters";
+import "./directives";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./index.scss";
 
