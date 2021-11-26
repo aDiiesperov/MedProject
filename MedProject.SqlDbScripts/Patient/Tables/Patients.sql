@@ -1,8 +1,0 @@
-﻿CREATE TABLE Patients (
-	Id INT PRIMARY KEY IDENTITY,
-	FirstName VARCHAR(100) NOT NULL,
-	LastName VARCHAR(100) NOT NULL,
-	StateCode CHAR(2) NOT NULL,
-	PharmacyName VARCHAR(100),
-	PharmacyAssignDate DATE
-);

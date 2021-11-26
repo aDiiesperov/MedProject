@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[MedUsersRoles]
+(
+	Id INT PRIMARY KEY IDENTITY, 
+    UserId INT NOT NULL FOREIGN KEY REFERENCES MedUsers(Id),
+    RoleId INT NOT NULL FOREIGN KEY REFERENCES MedRoles(Id),
+    CONSTRAINT AK_UserId_RoleId UNIQUE(UserId, RoleId)
+);

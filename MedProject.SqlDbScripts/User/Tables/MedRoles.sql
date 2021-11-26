@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[MedRoles]
+(
+	Id INT PRIMARY KEY IDENTITY, 
+    Name VARCHAR(50) UNIQUE NOT NULL
+);

@@ -56,17 +56,25 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
-    <Folder Include="Patient" />
-    <Folder Include="Patient\StoredProcedures" />
-    <Folder Include="Patient\Tables" />
     <Folder Include="Pharmacy" />
     <Folder Include="Pharmacy\StoredProcedures" />
     <Folder Include="Pharmacy\Tables" />
+    <Folder Include="User" />
+    <Folder Include="User\Tables" />
+    <Folder Include="User\StoredProcedures" />
+    <Folder Include="State" />
+    <Folder Include="State\Tables" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Patient\StoredProcedures\GetAllPatients.sql" />
-    <Build Include="Patient\Tables\Patients.sql" />
     <Build Include="Pharmacy\StoredProcedures\GetAllPharmacies.sql" />
     <Build Include="Pharmacy\Tables\Pharmacies.sql" />
+    <Build Include="User\Tables\MedUsers.sql" />
+    <Build Include="User\StoredProcedures\GetAllMedUsers.sql" />
+    <Build Include="User\StoredProcedures\GetUserByLogin.sql" />
+    <Build Include="User\Tables\MedRoles.sql" />
+    <Build Include="User\Tables\MedUsersRoles.sql" />
+    <Build Include="State\Tables\States.sql" />
+    <Build Include="User\Tables\MedUsersPharmacies.sql" />
+    <Build Include="User\StoredProcedures\GetUsersByRole.sql" />
   </ItemGroup>
 </Project>

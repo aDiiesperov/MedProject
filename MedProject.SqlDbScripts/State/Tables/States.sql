@@ -1,0 +1,6 @@
+﻿CREATE TABLE States
+(
+	Id TINYINT PRIMARY KEY IDENTITY,
+	Abbreviation char(2) NOT NULL UNIQUE,
+	Name varchar(50) NOT NULL UNIQUE,
+);
