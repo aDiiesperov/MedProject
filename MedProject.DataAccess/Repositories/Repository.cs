@@ -1,16 +1,24 @@
-﻿using MedProject.DataAccess.Interfaces;
+﻿using MedProject.DataAccess.DataStores;
+using MedProject.DataAccess.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MedProject.DataAccess.Repositories
 {
-    internal abstract class Repository<T> : IRepository<T> where T : class
+    internal abstract class Repository<TModel, TStore> : IRepository<TModel> 
+        where TModel : class
+        where TStore : BaseDataStore<TModel>
     {
-        protected abstract string nameGetProc { get; }
+        protected readonly TStore store;
 
-        public async Task<IList<T>> GetAllAsync()
+        public Repository(TStore store)
         {
-            return await AdoHelper.GetListByProcAsync<T>(this.nameGetProc);
+            this.store = store;
+        }
+
+        public Task<IList<TModel>> GetAllAsync()
+        {
+            return this.store.GetAllAsync();
         }
     }
 }

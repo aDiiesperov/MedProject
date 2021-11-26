@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace MedProject.DataAccess.Interfaces
 {
-    public interface IRepository<T> where T : class
+    public interface IRepository<TModel> where TModel : class
     {
-        Task<IList<T>> GetAllAsync();
+        Task<IList<TModel>> GetAllAsync();
     }
 }

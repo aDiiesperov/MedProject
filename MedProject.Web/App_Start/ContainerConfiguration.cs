@@ -24,6 +24,7 @@ namespace MedProject.Web
 
             // Register DataAccess services
             BusinessLogic.Registrator.Register(builder);
+            Services.Registrator.Register(builder);
 
             var container = builder.Build();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);

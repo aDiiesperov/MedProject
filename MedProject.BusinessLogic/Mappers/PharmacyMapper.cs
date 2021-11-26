@@ -3,7 +3,7 @@ using MedProject.DataAccess.Models;
 
 namespace MedProject.BusinessLogic.Mappers
 {
-    internal static class PharmacyMapper
+    public static class PharmacyMapper
     {
         public static PharmacyDto MapToDto(this Pharmacy model)
         {
@@ -14,7 +14,7 @@ namespace MedProject.BusinessLogic.Mappers
                 Email = model.Email,
                 Name = model.Name,
                 Phone = model.Phone,
-                StateCode = model.StateCode,
+                StateCode = model.State.Abbreviation,
             };
         }
     }

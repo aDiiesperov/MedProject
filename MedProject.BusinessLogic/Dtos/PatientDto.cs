@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 
 namespace MedProject.BusinessLogic.Dtos
 {
@@ -10,10 +10,8 @@ namespace MedProject.BusinessLogic.Dtos
 
         public string LastName { get; set; }
 
-        public string StateCode { get; set; }
+        public string StateAbbreviation { get; set; }
 
-        public string PharmacyName { get; set; }
-
-        public DateTime PharmacyAssignDate { get; set; }
+        public IList<PatientPharmacyDto> Pharmacies { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Autofac;
-using MedProject.DataAccess.Interfaces;
-using MedProject.DataAccess.Repositories;
+using MedProject.DataAccess.DataStores.AdoUtils;
+using System.Configuration;
+using System.Reflection;
 
 namespace MedProject.DataAccess
 {
@@ -8,8 +9,18 @@ namespace MedProject.DataAccess
     {
         public static void Register(ContainerBuilder builder)
         {
-            builder.RegisterType<PharmacyRepository>().As<IPharmacyRepository>();
-            builder.RegisterType<PatientRepository>().As<IPatientRepository>();
+            var connectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+            builder.Register(c => new AdoManager(connectionString)).AsSelf();
+
+
+            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
+                .Where(t => t.Name.EndsWith("DataStore") && !t.IsAbstract)
+                .AsSelf();
+
+            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
+                .Where(t => t.Name.EndsWith("Repository") && !t.IsAbstract)
+                .AsImplementedInterfaces();
+
         }
     }
 }

@@ -1,20 +1,30 @@
 ﻿using MedProject.BusinessLogic.Dtos;
-using MedProject.DataAccess.Models;
+using MedProject.DataAccess.DataStores.Models;
+using System;
+using System.Linq;
 
 namespace MedProject.BusinessLogic.Mappers
 {
-    internal static class PatientMapper
+    public static class PatientMapper
     {
-        public static PatientDto MapToDto(this Patient model)
+        public static PatientDto MapToDto(this GetUsersByRoleSPResult model)
         {
             return new PatientDto()
             {
                 Id = model.Id,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
-                StateCode = model.StateCode,
-                PharmacyName = model.PharmacyName,
-                PharmacyAssignDate = model.PharmacyAssignDate,
+                StateAbbreviation = model.StateAbbreviation,
+                Pharmacies = model.Pharmacies.Select(p => p.MapToDto()).ToList(),
+            };
+        }
+
+        public static PatientPharmacyDto MapToDto(this GetUsersByRoleSPResult.PharmacySPResult model)
+        {
+            return new PatientPharmacyDto()
+            {
+                Name = model.Name,
+                AssignDate = DateTime.Now, // TODO: fix later
             };
         }
     }

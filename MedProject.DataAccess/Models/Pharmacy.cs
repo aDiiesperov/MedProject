@@ -6,7 +6,7 @@
 
         public string Name { get; set; }
 
-        public string StateCode { get; set; }
+        public State State { get; set; }
 
         public string Address { get; set; }
 

@@ -10,7 +10,7 @@ namespace MedProject.BusinessLogic
         {
             DataAccess.Registrator.Register(builder);
             builder.RegisterType<PharmacyService>().As<IPharmacyService>();
-            builder.RegisterType<PatientService>().As<IPatientService>();
+            builder.RegisterType<UserService>().As<IUserService>();
         }
     }
 }

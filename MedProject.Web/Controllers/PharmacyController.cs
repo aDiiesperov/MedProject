@@ -4,6 +4,7 @@ using System.Web.Http;
 
 namespace MedProject.Web.Controllers
 {
+    [Authorize]
     public class PharmacyController : ApiController
     {
         private readonly IPharmacyService pharmacyService;

@@ -1,10 +1,13 @@
-﻿using MedProject.DataAccess.Interfaces;
+﻿using MedProject.DataAccess.DataStores;
+using MedProject.DataAccess.Interfaces;
 using MedProject.DataAccess.Models;
 
 namespace MedProject.DataAccess.Repositories
 {
-    internal class PharmacyRepository : Repository<Pharmacy>, IPharmacyRepository
+    internal class PharmacyRepository : Repository<Pharmacy, PharmacyDataStore>, IPharmacyRepository
     {
-        protected override string nameGetProc => "GetAllPharmacies";
+        public PharmacyRepository(PharmacyDataStore store) : base(store)
+        {
+        }
     }
 }
