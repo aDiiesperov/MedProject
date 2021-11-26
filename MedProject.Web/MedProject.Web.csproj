@@ -236,6 +236,7 @@
     <Content Include="ui\.env" />
     <Content Include="ui\.eslintrc.js" />
     <Content Include="ui\babel.config.js" />
+    <Content Include="ui\jsconfig.json" />
     <Content Include="ui\package-lock.json" />
     <Content Include="ui\package.json" />
     <Content Include="ui\src\App.vue" />
@@ -255,15 +256,21 @@
     <Content Include="ui\src\filters\index.js" />
     <Content Include="ui\src\helpers\date.helper.js" />
     <Content Include="ui\src\helpers\index.js" />
+    <Content Include="ui\src\helpers\jwt.parser.js" />
     <Content Include="ui\src\helpers\query-bar.helper.js" />
     <Content Include="ui\src\helpers\query.helper.js" />
     <Content Include="ui\src\index.scss" />
     <Content Include="ui\src\main.js" />
     <Content Include="ui\src\router\index.js" />
+    <Content Include="ui\src\services\auth.service.js" />
     <Content Include="ui\src\services\index.js" />
     <Content Include="ui\src\services\patient.js" />
+    <Content Include="ui\src\services\patient.service.js" />
     <Content Include="ui\src\services\pharmacy.js" />
+    <Content Include="ui\src\services\pharmacy.service.js" />
+    <Content Include="ui\src\services\setupInterceptors.js" />
     <Content Include="ui\src\store\index.js" />
+    <Content Include="ui\src\store\modules\auth.js" />
     <Content Include="ui\src\store\modules\patients.js" />
     <Content Include="ui\src\store\modules\pharmacies.js" />
     <Content Include="ui\src\store\modules\query-bar.js" />
@@ -291,7 +298,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="ui\jsconfig.json" />
+    <Content Include="ui\src\views\login\Login.scss" />
+    <Content Include="ui\src\views\login\Login.vue" />
+    <Content Include="ui\src\views\medications\MedicationList.vue" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MedProject.BusinessLogic\MedProject.BusinessLogic.csproj">

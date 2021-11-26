@@ -76,7 +76,6 @@
     <Compile Include="DataStores\Models\GetUserByLoginSPResult.cs" />
     <Compile Include="DataStores\Models\GetUsersByRoleSPResult.cs" />
     <Compile Include="DataStores\PharmacyDataStore.cs" />
-    <Compile Include="DataStores\Responses\DbResult.cs" />
     <Compile Include="Interfaces\IPharmacyRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUserRepository.cs" />
