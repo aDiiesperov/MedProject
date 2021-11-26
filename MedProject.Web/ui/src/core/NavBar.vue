@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <router-link class="navbar-brand" to="/">Navbar</router-link>
+      <router-link class="navbar-brand" to="/">Med Project</router-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -30,8 +30,45 @@
               Pharmacies
             </router-link>
           </li>
+          <li class="nav-item">
+            <router-link
+              class="nav-link"
+              active-class="active"
+              to="/medications"
+            >
+              Medications
+            </router-link>
+          </li>
         </ul>
+        <div v-if="user" class="d-flex">
+          <span class="navbar-text mx-2">Hi, {{ user.userName }}!</span>
+          <button
+            @click="logout()"
+            class="btn btn-sm btn-outline-secondary"
+            type="submit"
+          >
+            Logout
+          </button>
+        </div>
       </div>
     </div>
   </nav>
 </template>
+
+<script>
+import { mapGetters } from "vuex";
+import { actions as $A, getters as $G } from "@store/types";
+
+export default {
+  computed: {
+    ...mapGetters({
+      user: $G.AUTH_USER,
+    }),
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch($A.AUTH_LOGOUT);
+    },
+  },
+};
+</script>

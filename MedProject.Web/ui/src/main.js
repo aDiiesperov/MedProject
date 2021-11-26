@@ -2,9 +2,13 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+import { setupInterceptors } from "./services/setupInterceptors";
+
 import "./filters/index";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./index.scss";
+
+setupInterceptors(store);
 
 Vue.config.productionTip = false;
 

@@ -3,6 +3,7 @@ import Vuex from "vuex";
 import queryBar from "./modules/query-bar";
 import pharmacies from "./modules/pharmacies";
 import patients from "./modules/patients";
+import auth from "./modules/auth";
 
 Vue.use(Vuex);
 
@@ -11,5 +12,6 @@ export default new Vuex.Store({
     queryBar,
     pharmacies,
     patients,
+    auth,
   },
 });

@@ -41,19 +41,25 @@ export default {
     tableConfigs: [
       { prop: "FirstName", name: "First Name", width: 750, sortable: true },
       { prop: "LastName", name: "Last Name", width: 750, sortable: true },
-      { prop: "StateCode", name: "State Code", width: 400, sortable: true },
       {
-        prop: "PharmacyName",
-        name: "Pharmacy Name",
-        width: 750,
+        prop: "StateAbbreviation",
+        name: "State Code",
+        width: 400,
         sortable: true,
       },
       {
-        prop: DATE_FILTER_KEY,
-        name: "Assign Date",
-        type: "date",
-        width: 400,
+        prop: "PharmacyName",
+        name: "Pharmacies",
+        width: 1000,
         sortable: true,
+      },
+      {
+        name: "Refills Requested",
+        width: 800,
+      },
+      {
+        name: "Refills Acсepted",
+        width: 800,
       },
     ],
     isLoading: true,

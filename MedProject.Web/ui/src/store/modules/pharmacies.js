@@ -1,4 +1,4 @@
-import { Pharmacy } from "@services";
+import { PharmacyService } from "@services";
 import { getters as $G, actions as $A, mutations as $M } from "../types";
 
 const state = () => ({
@@ -13,7 +13,7 @@ const mutations = {
 
 const actions = {
   async [$A.PHARMACY_LOAD_LIST]({ commit }) {
-    const patients = await Pharmacy.getList();
+    const patients = await PharmacyService.getList();
     commit($M.PHARMACY_SET_LIST, patients);
   },
 };

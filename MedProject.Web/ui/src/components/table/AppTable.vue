@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="data && data.length">
     <table class="table table-hover table-striped">
       <thead class="text-center">
         <tr>
