@@ -3,7 +3,7 @@
 AS
 	SELECT U.Id, U.FirstName, U.LastName,
 			S.Abbreviation StateAbbreviation,
-			P.Id PharmacyId, P.Name PharmaciesName
+			P.Id PharmaciesId, P.Name PharmaciesName
 	FROM MedUsers U
 	LEFT JOIN MedUsersPharmacies UP ON U.Id = UP.UserId
 	LEFT JOIN Pharmacies P ON P.Id = UP.PharmacyId
