@@ -32,7 +32,7 @@ namespace MedProject.Services.Services
                 var JWTSecret = Encoding.ASCII.GetBytes(secret);
 
                 var idToken = JwtHelper.GenerateIdToken(user, JWTSecret);
-                var accessToken = JwtHelper.GenerateAccessToken(issuer, JWTSecret);
+                var accessToken = JwtHelper.GenerateAccessToken(user, issuer, JWTSecret);
 
                 return new AuthenticateResponse()
                 {

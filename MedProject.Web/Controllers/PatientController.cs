@@ -14,6 +14,7 @@ namespace MedProject.Web.Controllers
             this.patientService = patientService;
         }
 
+        [Authorize(Roles = "Pharmacist")]
         public async Task<IHttpActionResult> Get()
         {
             var list = await this.patientService.GetPatientListAsync();

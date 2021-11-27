@@ -9,7 +9,7 @@ function getUserData(token) {
   return {
     id: payload.id,
     userName: `${payload.firstName} ${payload.lastName}`,
-    roles: JSON.parse(payload.roles),
+    roles: payload.role,
   };
 }
 

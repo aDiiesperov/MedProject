@@ -14,7 +14,7 @@ namespace MedProject.Services.Helpers
         public static string GenerateIdToken(MedUser user, byte[] JWTSecret)
         {
             var credentials = JwtHelper.GenerateCredentials(JWTSecret);
-            var claimsIdentity = JwtHelper.GetClaimsIdentity(user);
+            var claimsIdentity = JwtHelper.GetClaimsForIdToken(user);
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
@@ -26,12 +26,29 @@ namespace MedProject.Services.Helpers
             return JwtHelper.GenerateJwtToken(tokenDescriptor);
         }
 
-        public static string GenerateAccessToken(string issuer, byte[] JWTSecret)
+        private static ClaimsIdentity GetClaimsForIdToken(MedUser user)
+        {
+            var permClaims = new List<Claim>();
+            permClaims.Add(new Claim(nameof(user.Id).FirstToLower(), user.Id.ToString()));
+            permClaims.Add(new Claim(nameof(user.FirstName).FirstToLower(), user.FirstName));
+            permClaims.Add(new Claim(nameof(user.LastName).FirstToLower(), user.LastName));
+
+            foreach (var role in user.Roles)
+            {
+                permClaims.Add(new Claim(ClaimTypes.Role, role.Name));
+            }
+
+            return new ClaimsIdentity(permClaims);
+        }
+
+        public static string GenerateAccessToken(MedUser user, string issuer, byte[] JWTSecret)
         {
             var credentials = JwtHelper.GenerateCredentials(JWTSecret);
+            var claimsIdentity = JwtHelper.GetClaimsForAccessToken(user);
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
+                Subject = claimsIdentity,
                 Expires = DateTime.UtcNow.AddHours(1),
                 Issuer = issuer,
                 Audience = issuer,
@@ -41,13 +58,15 @@ namespace MedProject.Services.Helpers
             return JwtHelper.GenerateJwtToken(tokenDescriptor);
         }
 
-        private static ClaimsIdentity GetClaimsIdentity(MedUser user)
+        private static ClaimsIdentity GetClaimsForAccessToken(MedUser user)
         {
             var permClaims = new List<Claim>();
-            permClaims.Add(new Claim(nameof(user.Id).FirstToLower(), user.Id.ToString()));
-            permClaims.Add(new Claim(nameof(user.FirstName).FirstToLower(), user.FirstName));
-            permClaims.Add(new Claim(nameof(user.LastName).FirstToLower(), user.LastName));
-            permClaims.Add(new Claim(nameof(user.Roles).FirstToLower(), JsonSerializer.Serialize(user.Roles.Select(r => r.Name))));
+            permClaims.Add(new Claim(nameof(user.Id), user.Id.ToString()));
+
+            foreach(var role in user.Roles)
+            {
+                permClaims.Add(new Claim(ClaimTypes.Role, role.Name));
+            }
 
             return new ClaimsIdentity(permClaims);
         }
