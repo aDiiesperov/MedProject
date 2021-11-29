@@ -5,6 +5,8 @@ namespace MedProject.Services.Interfaces
 {
     public interface IAuthService
     {
-        Task<AuthenticateResponse> AuthenticateAsync(AuthenticateRequest loginModel);
+        Task<AuthenticateResponse> AuthenticateAsync(string login, string password);
+
+        Task<AuthenticateResponse> RefreshTokenAsync(string token);
     }
 }

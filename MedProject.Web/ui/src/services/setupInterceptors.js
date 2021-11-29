@@ -21,13 +21,20 @@ export const setupInterceptors = (store) => {
     (res) => res,
     async (err) => {
       const originalConfig = err.config;
-      if (
-        !originalConfig.url.endsWith("/auth/login") &&
-        err.response?.status === 401
-      ) {
-        // TODO: Access Token was expired - add refresh token later
-        store.dispatch($A.AUTH_LOGOUT);
+
+      if (err.response.status === 401 && !originalConfig._retry) {
+        originalConfig._retry = true;
+
+        try {
+          await store.dispatch($A.AUTH_SILENT_REFRESH);
+
+          return axios(originalConfig);
+        } catch (_error) {
+          store.dispatch($A.AUTH_LOGOUT);
+          return Promise.reject(_error);
+        }
       }
+
       return Promise.reject(err);
     }
   );

@@ -90,6 +90,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\ClaimsExtensions.cs" />
     <Compile Include="Helpers\JwtHelper.cs" />
     <Compile Include="Helpers\StringExtensions.cs" />
     <Compile Include="Models\AuthenticateResponse.cs" />
@@ -108,6 +109,10 @@
     <ProjectReference Include="..\MedProject.DataAccess\MedProject.DataAccess.csproj">
       <Project>{00f87c74-93b9-4850-8a23-17844f4c1409}</Project>
       <Name>MedProject.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MedProject.Shared\MedProject.Shared.csproj">
+      <Project>{335dae7e-2773-4771-ae22-3ff6c788c0f7}</Project>
+      <Name>MedProject.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

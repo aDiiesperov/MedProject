@@ -24,12 +24,10 @@ namespace MedProject.Web
                     AuthenticationMode = AuthenticationMode.Active,
                     TokenValidationParameters = new TokenValidationParameters()
                     {
-                        ValidateIssuer = true,
-                        ValidateAudience = true,
                         ValidateIssuerSigningKey = true,
-                        ValidIssuer = issuer, 
-                        ValidAudience = issuer,
-                        IssuerSigningKey = new SymmetricSecurityKey(JWTSecret)
+                        IssuerSigningKey = new SymmetricSecurityKey(JWTSecret),
+                        ValidIssuer = issuer,
+                        ValidAudience = issuer
                     }
                 });
         }

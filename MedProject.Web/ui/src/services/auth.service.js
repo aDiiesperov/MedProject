@@ -4,7 +4,17 @@ import axios from "axios";
 export class AuthService {
   static login(data) {
     return axios
-      .post(`${process.env.VUE_APP_API_URL}/auth/login`, data)
+      .get(`${process.env.VUE_APP_API_URL}/auth/login`, {
+        params: data,
+      })
+      .then((response) => response.data);
+  }
+
+  static refreshToken(token) {
+    return axios
+      .get(`${process.env.VUE_APP_API_URL}/auth/refresh-token`, {
+        params: { token },
+      })
       .then((response) => response.data);
   }
 }

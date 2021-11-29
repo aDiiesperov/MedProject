@@ -308,6 +308,10 @@
       <Project>{b4bd6060-1945-4915-a002-274f494747d0}</Project>
       <Name>MedProject.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MedProject.Shared\MedProject.Shared.csproj">
+      <Project>{335DAE7E-2773-4771-AE22-3FF6C788C0F7}</Project>
+      <Name>MedProject.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

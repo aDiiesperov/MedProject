@@ -1,4 +1,4 @@
-﻿using MedProject.BusinessLogic.Exceptions;
+﻿using MedProject.Shared.Exceptions;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http.Filters;

@@ -7,32 +7,35 @@ function getUserData(token) {
   let payload = JwtParser.parsePayload(token);
 
   return {
-    id: payload.id,
     userName: `${payload.firstName} ${payload.lastName}`,
     roles: payload.role,
   };
 }
 
 const accessToken = localStorage.getItem("accessToken");
+const refreshToken = localStorage.getItem("refreshToken");
 const idToken = localStorage.getItem("idToken");
+
 const user = idToken ? getUserData(idToken) : null;
 
 const state = () => ({
   isAuthenticated: accessToken ? true : false,
   user,
   accessToken,
-  refreshToken: null,
+  refreshToken,
   error: null,
 });
 
 const mutations = {
   [$M.AUTH_SUCCESS_LOGIN](state, data) {
     state.isAuthenticated = true;
-    state.accessToken = data.AccessToken;
     state.user = getUserData(data.IdToken);
+    state.accessToken = data.AccessToken;
+    state.refreshToken = data.RefreshToken;
     state.error = null;
 
     localStorage.setItem("accessToken", data.AccessToken);
+    localStorage.setItem("refreshToken", data.RefreshToken);
     localStorage.setItem("idToken", data.IdToken);
   },
   [$M.AUTH_FAILED_LOGIN](state, error) {
@@ -42,8 +45,10 @@ const mutations = {
     state.isAuthenticated = false;
     state.user = null;
     state.accessToken = null;
+    state.refreshToken = null;
 
     localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
     localStorage.removeItem("idToken");
   },
 };
@@ -65,6 +70,11 @@ const actions = {
       }
     }
   },
+  async [$A.AUTH_SILENT_REFRESH]({ commit, state }) {
+    if (!state.refreshToken) throw new Error("Refresh token is empty!");
+    const res = await AuthService.refreshToken(state.refreshToken);
+    commit($M.AUTH_SUCCESS_LOGIN, res);
+  },
   [$A.AUTH_LOGOUT]({ commit, state }) {
     if (!state.accessToken) return;
     commit($M.AUTH_LOGOUT);
@@ -81,6 +91,9 @@ const getters = {
   },
   [$G.AUTH_ACCESS_TOKEN](state) {
     return state.accessToken;
+  },
+  [$G.AUTH_REFRESH_TOKEN](state) {
+    return state.refreshToken;
   },
   [$G.AUTH_ERROR](state) {
     return state.error;

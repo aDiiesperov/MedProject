@@ -64,7 +64,7 @@ export default {
     onSubmit() {
       if (this.isValidForm) {
         var data = {
-          loginName: this.login,
+          login: this.login,
           password: this.password,
         };
         this.isLoading = true;

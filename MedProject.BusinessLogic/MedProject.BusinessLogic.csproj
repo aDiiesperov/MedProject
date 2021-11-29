@@ -71,7 +71,6 @@
     <Compile Include="Dtos\PatientDto.cs" />
     <Compile Include="Dtos\PatientPharmacyDto.cs" />
     <Compile Include="Dtos\PharmacyDto.cs" />
-    <Compile Include="Exceptions\MedException.cs" />
     <Compile Include="Interfaces\ICrudService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Interfaces\IPharmacyService.cs" />

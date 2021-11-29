@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MedProject.BusinessLogic.Exceptions
+namespace MedProject.Shared.Exceptions
 {
     public class MedException : Exception
     {
