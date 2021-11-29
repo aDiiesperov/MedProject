@@ -40,12 +40,12 @@ export default {
       },
     ],
     tableConfigs: [
-      { prop: "FirstName", name: "First Name", width: 700, sortable: true },
-      { prop: "LastName", name: "Last Name", width: 700, sortable: true },
+      { prop: "FirstName", name: "First Name", width: 600, sortable: true },
+      { prop: "LastName", name: "Last Name", width: 600, sortable: true },
       {
         prop: "StateAbbreviation",
         name: "State Code",
-        width: 350,
+        width: 300,
         sortable: true,
       },
       {
@@ -53,14 +53,6 @@ export default {
         name: "Pharmacies",
         component: PharmaciesCell,
         width: 1000,
-      },
-      {
-        name: "Refills Requested",
-        width: 700,
-      },
-      {
-        name: "Refills Acсepted",
-        width: 700,
       },
     ],
     isLoading: true,
