@@ -6,9 +6,7 @@ using MedProject.Services.Interfaces;
 using MedProject.Services.Models;
 using MedProject.Shared.Exceptions;
 using Microsoft.IdentityModel.Tokens;
-using System.Configuration;
 using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MedProject.Services.Services
@@ -32,9 +30,8 @@ namespace MedProject.Services.Services
 
             if (PasswordHelper.VerifyHashedPassword(user.PasswordHash, password))
             {
-                var issuer = ConfigurationManager.AppSettings["issuer"];
-                var secret = ConfigurationManager.AppSettings["JWT_Secret"];
-                var JWTSecret = Encoding.ASCII.GetBytes(secret);
+                var issuer = ConfigAuthHelper.GetIssuer();
+                var JWTSecret = ConfigAuthHelper.GetJWTSecret();
 
                 return this.GetTokens(user, issuer, JWTSecret);
             }
@@ -44,9 +41,8 @@ namespace MedProject.Services.Services
 
         public async Task<AuthenticateResponse> RefreshTokenAsync(string token)
         {
-            var issuer = ConfigurationManager.AppSettings["issuer"];
-            var secret = ConfigurationManager.AppSettings["JWT_Secret"];
-            var JWTSecret = Encoding.ASCII.GetBytes(secret);
+            var issuer = ConfigAuthHelper.GetIssuer();
+            var JWTSecret = ConfigAuthHelper.GetJWTSecret();
 
             try
             {
@@ -71,8 +67,8 @@ namespace MedProject.Services.Services
 
         private AuthenticateResponse GetTokens(MedUser user, string issuer, byte[] JWTSecret)
         {
-            var tokenLifetime = int.Parse(ConfigurationManager.AppSettings["tokenLifetime"]);
-            var refreshLifetime = int.Parse(ConfigurationManager.AppSettings["refreshLifetime"]);
+            var tokenLifetime = ConfigAuthHelper.GetTokenLifetime();
+            var refreshLifetime = ConfigAuthHelper.GetRefreshLifetime();
 
             var idToken = JwtHelper.GenerateIdToken(user, JWTSecret);
             var accessToken = JwtHelper.GenerateAccessToken(user, issuer, JWTSecret, tokenLifetime);

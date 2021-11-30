@@ -91,10 +91,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\ClaimsExtensions.cs" />
+    <Compile Include="Helpers\ConfigAuthHelper.cs" />
     <Compile Include="Helpers\JwtHelper.cs" />
     <Compile Include="Helpers\StringExtensions.cs" />
     <Compile Include="Models\AuthenticateResponse.cs" />
-    <Compile Include="Models\AuthenticateRequest.cs" />
     <Compile Include="Interfaces\IAuthService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registrator.cs" />
