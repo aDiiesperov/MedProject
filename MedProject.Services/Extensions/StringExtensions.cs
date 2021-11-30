@@ -1,4 +1,4 @@
-﻿namespace MedProject.Services.Helpers
+﻿namespace MedProject.Services.Extensions
 {
     public static class StringExtensions
     {
