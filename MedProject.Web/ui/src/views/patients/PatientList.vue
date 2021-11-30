@@ -95,5 +95,8 @@ export default {
       );
     },
   },
+  destroyed() {
+    this.$store.dispatch($A.PATIENT_RESET);
+  },
 };
 </script>

@@ -278,6 +278,7 @@
     <Content Include="ui\src\views\login\Login.vue" />
     <Content Include="ui\src\views\medications\MedicationList.vue" />
     <Content Include="ui\src\views\patients\PatientList.vue" />
+    <Content Include="ui\src\views\patients\PharmaciesCell.vue" />
     <Content Include="ui\src\views\pharmacies\PharmacyList.vue" />
     <Content Include="ui\vue.config.js" />
     <Content Include="Web.config" />
@@ -297,7 +298,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="ui\src\views\patients\PharmaciesCell.vue" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MedProject.BusinessLogic\MedProject.BusinessLogic.csproj">

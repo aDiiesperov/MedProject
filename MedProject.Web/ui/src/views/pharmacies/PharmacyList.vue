@@ -67,5 +67,8 @@ export default {
         .finally(() => (this.isLoading = false));
     },
   },
+  destroyed() {
+    this.$store.dispatch($A.PHARMACY_RESET);
+  },
 };
 </script>

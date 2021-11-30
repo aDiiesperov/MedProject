@@ -16,6 +16,9 @@ const actions = {
     const patients = await PharmacyService.getList();
     commit($M.PHARMACY_SET_LIST, patients);
   },
+  [$A.PHARMACY_RESET]({ commit }) {
+    commit($M.PHARMACY_SET_LIST, []);
+  },
 };
 
 const getters = {
