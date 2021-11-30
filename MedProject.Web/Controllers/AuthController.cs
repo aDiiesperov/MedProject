@@ -36,10 +36,6 @@ namespace MedProject.Web.Controllers
         public async Task<IHttpActionResult> RefreshToken([QueryString] string token)
         {
             var res = await this.authService.RefreshTokenAsync(token);
-
-            if (res == null)
-                throw new MedException("Failed to refresh!");
-
             return this.Ok(res);
         }
     }

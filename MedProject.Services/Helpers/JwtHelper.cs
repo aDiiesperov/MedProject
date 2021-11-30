@@ -76,16 +76,24 @@ namespace MedProject.Services.Helpers
             return tokenHandler.ReadJwtToken(jwt);
         }
 
-        /// <exception cref="SecurityTokenException"></exception>
-        public static ClaimsPrincipal ValidateToken(string token, string issuer, byte[] JWTSecret)
+        public static bool TryValidateToken(string token, TokenValidationParameters validationParams, out JwtSecurityToken jwtToken)
         {
-            var validationParameters = JwtHelper.GetValidationParameters(issuer, JWTSecret);
-            
             var tokenHandler = new JwtSecurityTokenHandler();
-            return tokenHandler.ValidateToken(token, validationParameters, out _);
+
+            try
+            {
+                tokenHandler.ValidateToken(token, validationParams, out var securityToken);
+                jwtToken = (JwtSecurityToken)securityToken;
+                return true;
+            }
+            catch
+            {
+                jwtToken = null;
+                return false;
+            }
         }
 
-        private static TokenValidationParameters GetValidationParameters(string issuer, byte[] JWTSecret)
+        public static TokenValidationParameters GetValidationParameters(string issuer, byte[] JWTSecret)
         {
             return new TokenValidationParameters()
             {

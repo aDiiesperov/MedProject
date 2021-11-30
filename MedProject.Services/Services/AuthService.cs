@@ -5,8 +5,7 @@ using MedProject.Services.Helpers;
 using MedProject.Services.Interfaces;
 using MedProject.Services.Models;
 using MedProject.Shared.Exceptions;
-using Microsoft.IdentityModel.Tokens;
-using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
 using System.Threading.Tasks;
 
 namespace MedProject.Services.Services
@@ -15,9 +14,12 @@ namespace MedProject.Services.Services
     {
         private readonly IUserRepository userRepository;
 
-        public AuthService(IUserRepository userRepository)
+        private readonly AuthCacheManager authCache;
+
+        public AuthService(IUserRepository userRepository, AuthCacheManager authCache)
         {
             this.userRepository = userRepository;
+            this.authCache = authCache;
         }
 
         public async Task<AuthenticateResponse> AuthenticateAsync(string login, string password)
@@ -39,27 +41,35 @@ namespace MedProject.Services.Services
             return null;
         }
 
+        /// <exception cref="MedException"></exception>
         public async Task<AuthenticateResponse> RefreshTokenAsync(string token)
         {
             var issuer = ConfigAuthHelper.GetIssuer();
             var JWTSecret = ConfigAuthHelper.GetJWTSecret();
+            var validationParams = JwtHelper.GetValidationParameters(issuer, JWTSecret);
 
-            try
+            if (JwtHelper.TryValidateToken(token, validationParams, out var jwtToken))
             {
-                var claimsPrincipal = JwtHelper.ValidateToken(token, issuer, JWTSecret);
+                if (this.authCache.Contains(token))
+                {
+                    throw new MedException("Previously consumed");
+                }
 
-                // TODO: add to the store refresh token and check used tokens
+                if (!this.authCache.TryAdd(token, jwtToken.ValidTo))
+                {
+                    throw new MedException("Failed to refresh!");
+                }
 
-                var loginName = claimsPrincipal.GetClaim(ClaimTypes.NameIdentifier);
+                var loginName = jwtToken.GetClaim(JwtRegisteredClaimNames.NameId);
                 var user = await this.userRepository.GetByLoginAsync(loginName);
                 if (user == null)
                 {
-                    return null;
+                    throw new MedException("Failed to refresh!"); ;
                 }
 
                 return this.GetTokens(user, issuer, JWTSecret);
             }
-            catch (SecurityTokenException)
+            else
             {
                 throw new MedException("Refresh token isn't valid!");
             }

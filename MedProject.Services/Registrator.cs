@@ -8,6 +8,8 @@ namespace MedProject.Services
     {
         public static void Register(ContainerBuilder builder)
         {
+            builder.RegisterType<AuthCacheManager>().SingleInstance();
+
             builder.RegisterType<AuthService>().As<IAuthService>();
         }
     }

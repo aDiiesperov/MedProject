@@ -11,7 +11,6 @@ namespace MedProject.Web
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
-
             config.Filters.Add(new MedExceptionFilter());
 
             config.MapHttpAttributeRoutes();
