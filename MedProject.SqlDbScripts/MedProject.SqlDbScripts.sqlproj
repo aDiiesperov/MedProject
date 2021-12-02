@@ -64,6 +64,11 @@
     <Folder Include="User\StoredProcedures" />
     <Folder Include="State" />
     <Folder Include="State\Tables" />
+    <Folder Include="Medication" />
+    <Folder Include="Medication\Tables" />
+    <Folder Include="Medication\StoreProcedures" />
+    <Folder Include="Order" />
+    <Folder Include="Order\Tables" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Pharmacy\StoredProcedures\GetAllPharmacies.sql" />
@@ -76,5 +81,8 @@
     <Build Include="State\Tables\States.sql" />
     <Build Include="User\Tables\MedUsersPharmacies.sql" />
     <Build Include="User\StoredProcedures\GetUsersByRole.sql" />
+    <Build Include="Medication\Tables\Medications.sql" />
+    <Build Include="Pharmacy\Tables\PharmaciesMedications.sql" />
+    <Build Include="Order\Tables\OrderItem.sql" />
   </ItemGroup>
 </Project>
