@@ -111,7 +111,7 @@ namespace MedProject.DataAccess
 
             foreach (var item in list)
             {
-                if (itemProps.All(prop => prop.GetValue(item) == reader[tablePrefix + prop.Name]))
+                if (itemProps.All(prop => prop.GetValue(item).Equals(reader[tablePrefix + prop.Name])))
                 {
                     obj = item;
                     return true;
