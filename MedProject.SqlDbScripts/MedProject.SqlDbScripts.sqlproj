@@ -82,7 +82,8 @@
     <Build Include="User\Tables\MedUsersPharmacies.sql" />
     <Build Include="User\StoredProcedures\GetUsersByRole.sql" />
     <Build Include="Medication\Tables\Medications.sql" />
-    <Build Include="Pharmacy\Tables\PharmaciesMedications.sql" />
+    <Build Include="Pharmacy\Tables\Stocks.sql" />
     <Build Include="Order\Tables\OrderItem.sql" />
+    <Build Include="Medication\StoreProcedures\GetMedicationsToOrder.sql" />
   </ItemGroup>
 </Project>

@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace MedProject.BusinessLogic.Mappers
 {
-    public static class RoleMapper
+    internal static class RoleMapper
     {
         public static MedRoleDto MapToDto(this MedRole model)
         {

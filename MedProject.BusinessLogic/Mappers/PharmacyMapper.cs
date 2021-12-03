@@ -3,7 +3,7 @@ using MedProject.DataAccess.Models;
 
 namespace MedProject.BusinessLogic.Mappers
 {
-    public static class PharmacyMapper
+    internal static class PharmacyMapper
     {
         public static PharmacyDto MapToDto(this Pharmacy model)
         {

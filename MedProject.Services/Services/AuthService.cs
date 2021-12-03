@@ -60,7 +60,7 @@ namespace MedProject.Services.Services
                     throw new MedException("Failed to refresh!");
                 }
 
-                var loginName = jwtToken.GetClaim(JwtRegisteredClaimNames.NameId);
+                var loginName = jwtToken.Claims.GetClaim(JwtRegisteredClaimNames.NameId);
                 var user = await this.userRepository.GetByLoginAsync(loginName);
                 if (user == null)
                 {

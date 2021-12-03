@@ -66,14 +66,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\MedicationToOrderDto.cs" />
     <Compile Include="Dtos\MedRoleDto.cs" />
     <Compile Include="Dtos\MedUserDto.cs" />
     <Compile Include="Dtos\PatientDto.cs" />
     <Compile Include="Dtos\PatientPharmacyDto.cs" />
     <Compile Include="Dtos\PharmacyDto.cs" />
     <Compile Include="Interfaces\ICrudService.cs" />
+    <Compile Include="Interfaces\IMedicationService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Interfaces\IPharmacyService.cs" />
+    <Compile Include="Mappers\MedicationMapper.cs" />
     <Compile Include="Mappers\MedUserMapper.cs" />
     <Compile Include="Mappers\PatientMapper.cs" />
     <Compile Include="Mappers\PharmacyMapper.cs" />
@@ -81,6 +84,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registrator.cs" />
     <Compile Include="Services\CrudService.cs" />
+    <Compile Include="Services\MedicationService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Services\PharmacyService.cs" />
   </ItemGroup>

@@ -11,6 +11,7 @@ namespace MedProject.BusinessLogic
             DataAccess.Registrator.Register(builder);
             builder.RegisterType<PharmacyService>().As<IPharmacyService>();
             builder.RegisterType<UserService>().As<IUserService>();
+            builder.RegisterType<MedicationService>().As<IMedicationService>();
         }
     }
 }

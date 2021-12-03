@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace MedProject.DataAccess.Mapper
 {
-    public static class MedUserMapper
+    internal static class MedUserMapper
     {
         public static MedUser MapToEntity(this GetUserByLoginSPResult model)
         {

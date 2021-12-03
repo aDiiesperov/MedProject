@@ -12,10 +12,10 @@ namespace MedProject.DataAccess.Models
 
         public Pharmacy Pharmacy { get; set; }
 
-        public float Quantity { get; set; }
+        public double Quantity { get; set; }
 
         public OrderStatus OrderStatus { get; set; }
 
-        public float Available { get; set; }
+        public double? Available { get; set; }
     }
 }

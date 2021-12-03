@@ -1,11 +1,10 @@
 ﻿using MedProject.BusinessLogic.Dtos;
 using MedProject.DataAccess.DataStores.Models;
-using System;
 using System.Linq;
 
 namespace MedProject.BusinessLogic.Mappers
 {
-    public static class PatientMapper
+    internal static class PatientMapper
     {
         public static PatientDto MapToDto(this GetUsersByRoleSPResult model)
         {

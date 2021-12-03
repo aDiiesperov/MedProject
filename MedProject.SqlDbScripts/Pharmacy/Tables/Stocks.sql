@@ -4,5 +4,6 @@
     [PharmacyId] INT NOT NULL FOREIGN KEY REFERENCES Pharmacies(Id), 
     [MedicationId] INT NOT NULL FOREIGN KEY REFERENCES Medications(Id), 
     [Quantity] FLOAT NOT NULL DEFAULT 0,
+    CONSTRAINT AK_PharmacyId_MedicationId UNIQUE(PharmacyId, MedicationId)
     -- Price
 )

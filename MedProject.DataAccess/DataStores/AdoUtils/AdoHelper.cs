@@ -34,6 +34,8 @@ namespace MedProject.DataAccess
                 AdoHelper.PopulateObject(obj, reader);
             }
 
+            reader.Close();
+
             return list;
         }
 
@@ -54,7 +56,8 @@ namespace MedProject.DataAccess
                 }
                 else
                 {
-                    prop.SetValue(obj, reader[tablePrefix + prop.Name]);
+                    var val = reader[tablePrefix + prop.Name];
+                    prop.SetValue(obj, val is DBNull ? null : val);
                 }
             }
         }
@@ -70,7 +73,7 @@ namespace MedProject.DataAccess
                 prop.SetValue(obj, list);
             }
 
-            if (!AdoHelper.TryGetExistsObject(list as IEnumerable, reader, out object itemObj, "Id", tablePrefix + prop.Name))
+            if (!AdoHelper.TryGetExistsObject(list as IEnumerable, reader, out object itemObj, tablePrefix + prop.Name))
             {
                 if (!AdoHelper.TryCreateInstance(itemType, reader, tablePrefix + prop.Name, out itemObj))
                 {
@@ -100,23 +103,23 @@ namespace MedProject.DataAccess
             AdoHelper.PopulateObject(item, reader, tablePrefix + prop.Name);
         }
 
-        private static bool TryGetExistsObject(IEnumerable list, SqlDataReader reader, out object obj, string compareFields = "Id", string tablePrefix = "")
+        private static bool TryGetExistsObject(IEnumerable list, SqlDataReader reader, out object obj, string tablePrefix = "")
         {
-            obj = null;
             var itemType = list.GetType().GetGenericArguments().Single();
-            var compareValue = reader[tablePrefix + compareFields];
+            var itemProps = itemType.GetProperties()
+                                .Where(p => !p.PropertyType.IsEnumerable() && !p.PropertyType.IsNavigationClass());
 
             foreach (var item in list)
             {
-                var itemValue = itemType.GetProperty(compareFields).GetValue(item);
-                if (compareValue.Equals(itemValue))
+                if (itemProps.All(prop => prop.GetValue(item) == reader[tablePrefix + prop.Name]))
                 {
                     obj = item;
-                    break;
+                    return true;
                 }
             }
 
-            return obj != null;
+            obj = null;
+            return false;
         }
 
         private static bool TryCreateInstance(Type itemType, SqlDataReader reader, string tablePrefix, out object instance)
