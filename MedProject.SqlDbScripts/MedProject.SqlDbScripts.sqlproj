@@ -85,5 +85,6 @@
     <Build Include="Pharmacy\Tables\Stocks.sql" />
     <Build Include="Order\Tables\OrderItem.sql" />
     <Build Include="Medication\StoreProcedures\GetMedicationsToOrder.sql" />
+    <Build Include="Pharmacy\StoredProcedures\GetAssignedPharmacies.sql" />
   </ItemGroup>
 </Project>

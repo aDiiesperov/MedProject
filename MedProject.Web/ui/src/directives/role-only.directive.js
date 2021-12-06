@@ -7,7 +7,11 @@ Vue.directive("role-only", {
     const role = binding.value.toLowerCase();
     const userRoles = store.getters[$G.AUTH_USER].roles;
 
-    if (!userRoles.some((r) => r.toLowerCase() === role)) {
+    if (
+      userRoles === role ||
+      (userRoles instanceof Array &&
+        !userRoles.some((r) => r.toLowerCase() === role))
+    ) {
       el.style.display = "none";
     }
   },
