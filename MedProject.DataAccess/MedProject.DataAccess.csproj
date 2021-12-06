@@ -77,6 +77,7 @@
     <Compile Include="DataStores\Models\GetMedicationsToOrderSPResult.cs" />
     <Compile Include="DataStores\Models\GetUserByLoginSPResult.cs" />
     <Compile Include="DataStores\Models\GetUsersByRoleSPResult.cs" />
+    <Compile Include="DataStores\Models\RequestMedicationsSPParams.cs" />
     <Compile Include="DataStores\PharmacyDataStore.cs" />
     <Compile Include="Enums\OrderStatus.cs" />
     <Compile Include="Interfaces\IMedicationRepository.cs" />

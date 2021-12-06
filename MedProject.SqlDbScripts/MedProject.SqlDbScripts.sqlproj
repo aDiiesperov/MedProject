@@ -69,6 +69,7 @@
     <Folder Include="Medication\StoreProcedures" />
     <Folder Include="Order" />
     <Folder Include="Order\Tables" />
+    <Folder Include="Order\StoreProcedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Pharmacy\StoredProcedures\GetAllPharmacies.sql" />
@@ -86,5 +87,6 @@
     <Build Include="Order\Tables\OrderItem.sql" />
     <Build Include="Medication\StoreProcedures\GetMedicationsToOrder.sql" />
     <Build Include="Pharmacy\StoredProcedures\GetAssignedPharmacies.sql" />
+    <Build Include="Order\StoreProcedures\RequestMedications.sql" />
   </ItemGroup>
 </Project>

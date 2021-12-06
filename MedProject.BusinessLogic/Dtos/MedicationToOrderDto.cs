@@ -1,6 +1,4 @@
-﻿using MedProject.DataAccess.Enums;
-
-namespace MedProject.BusinessLogic.Dtos
+﻿namespace MedProject.BusinessLogic.Dtos
 {
     public class MedicationToOrderDto
     {
@@ -12,9 +10,11 @@ namespace MedProject.BusinessLogic.Dtos
 
         public string Medication { get; set; }
 
-        public double Quantity { get; set; }
+        public double TotalQuantity { get; set; }
 
-        public OrderStatus? OrderStatus { get; set; }
+        public string Status { get; set; }
+
+        public double OrderedQuantity { get; set; }
 
         public double? Available { get; set; }
     }

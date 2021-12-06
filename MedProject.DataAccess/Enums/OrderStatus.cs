@@ -1,6 +1,6 @@
 ﻿namespace MedProject.DataAccess.Enums
 {
-    public enum OrderStatus
+    public enum OrderStatus : byte
     {
         Requested,
         Accepted,

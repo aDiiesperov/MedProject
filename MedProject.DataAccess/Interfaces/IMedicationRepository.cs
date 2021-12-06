@@ -8,5 +8,7 @@ namespace MedProject.DataAccess.Interfaces
     public interface IMedicationRepository : IRepository<Medication>
     {
         Task<IList<GetMedicationsToOrderSPResult>> GetMedicationsToOrderAsync(int userId);
+
+        Task RequestMedicationsAsync(RequestMedicationsSPParams model);
     }
 }

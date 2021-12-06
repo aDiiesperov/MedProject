@@ -24,7 +24,7 @@
       <tbody>
         <tr v-for="item in currentItems" :key="item.id">
           <td
-            class="px-3"
+            class="text-center px-3"
             v-for="config in configs"
             :key="config.name || config.prop"
             :style="{ width: config.width + 'px' }"
@@ -34,11 +34,21 @@
               :is="config.component"
               :item="item"
             ></component>
+            <app-buttons-cell
+              v-else-if="config.type === 'button'"
+              :config="config"
+              :item="item"
+            ></app-buttons-cell>
             <p v-else-if="config.type === 'date'">
               {{ item[config.prop] | formatDate }}
             </p>
-
-            <p v-else>{{ item[config.prop] }}</p>
+            <p v-else>
+              {{
+                config.valueResolver
+                  ? config.valueResolver(item)
+                  : item[config.prop] | nullToDash
+              }}
+            </p>
           </td>
         </tr>
       </tbody>
@@ -54,11 +64,12 @@
 
 <script>
 import AppPagination from "./AppPagination.vue";
+import AppButtonsCell from "./cells/AppButtonsCell.vue";
 import { orderBy } from "lodash";
 import { QueryHelper } from "@/helpers";
 
 export default {
-  components: { AppPagination },
+  components: { AppPagination, AppButtonsCell },
   props: {
     configs: {
       typeof: Array,

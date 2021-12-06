@@ -1,5 +1,7 @@
 ﻿using MedProject.BusinessLogic.Dtos;
 using MedProject.DataAccess.DataStores.Models;
+using MedProject.DataAccess.Enums;
+using System;
 
 namespace MedProject.BusinessLogic.Mappers
 {
@@ -13,8 +15,9 @@ namespace MedProject.BusinessLogic.Mappers
                 Pharmacy = model.Pharmacy,
                 MedicationId = model.MedicationId,
                 Medication = model.Medication,
-                Quantity = model.Quantity,
-                OrderStatus = model.OrderStatus,
+                TotalQuantity = model.TotalQuantity,
+                Status = model.Status.HasValue ? Enum.GetName(typeof(OrderStatus), model.Status) : null,
+                OrderedQuantity = model.OrderedQuantity,
                 Available = model.Available,
             };
         }

@@ -33,6 +33,12 @@ namespace MedProject.DataAccess.DataStores.AdoUtils
             return await AdoHelper.ReadData<T>(reader);
         }
 
+        public Task<int> ExecuteNonQueryAsync()
+        {
+            this.OpenConnection();
+            return cmd.ExecuteNonQueryAsync();
+        }
+
         private void OpenConnection()
         {
             if (this.cmd.Connection.State != ConnectionState.Open)

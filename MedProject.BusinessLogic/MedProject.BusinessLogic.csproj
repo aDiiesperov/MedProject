@@ -66,6 +66,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\MedicationRequestDto.cs" />
     <Compile Include="Dtos\MedicationToOrderDto.cs" />
     <Compile Include="Dtos\MedRoleDto.cs" />
     <Compile Include="Dtos\MedUserDto.cs" />

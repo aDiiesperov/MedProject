@@ -7,5 +7,7 @@ namespace MedProject.BusinessLogic.Interfaces
     public interface IMedicationService
     {
         Task<IList<MedicationToOrderDto>> GetMedicationsToOrderAsync(int userId);
+
+        Task RequestMedicationsAsync(int userId, MedicationRequestDto request);
     }
 }

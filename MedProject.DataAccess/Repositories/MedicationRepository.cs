@@ -17,5 +17,10 @@ namespace MedProject.DataAccess.Repositories
         {
             return this.store.GetMedicationsToOrderAsync(userId);
         }
+
+        public Task RequestMedicationsAsync(RequestMedicationsSPParams model)
+        {
+            return this.store.RequestMedicationsAsync(model);
+        }
     }
 }
