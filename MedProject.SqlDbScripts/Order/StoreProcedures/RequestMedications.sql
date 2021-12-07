@@ -15,7 +15,8 @@ BEGIN
 			PharmacyId = @pharmacyId;
 
 	IF (@orderId IS NOT NULL)
-		UPDATE OrderItem SET Quantity = @quantity, Status = @status;
+		UPDATE OrderItem SET Quantity = @quantity, Status = @status
+		WHERE Id = @orderId;
 	ELSE
 		INSERT INTO OrderItem(UserId, MedicationId, PharmacyId, Status, Quantity)
 		VALUES (@userId, @medicationId, @PharmacyId, @status, @quantity);

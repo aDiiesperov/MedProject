@@ -74,6 +74,7 @@
     <Compile Include="DataStores\AdoUtils\AdoTypeHelper.cs" />
     <Compile Include="DataStores\BaseDataStore.cs" />
     <Compile Include="DataStores\MedicationDataStore.cs" />
+    <Compile Include="DataStores\Models\CancelMedicationsSPParams.cs" />
     <Compile Include="DataStores\Models\GetMedicationsToOrderSPResult.cs" />
     <Compile Include="DataStores\Models\GetUserByLoginSPResult.cs" />
     <Compile Include="DataStores\Models\GetUsersByRoleSPResult.cs" />
@@ -104,6 +105,11 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\MedProject.Shared\MedProject.Shared.csproj">
+      <Project>{335DAE7E-2773-4771-AE22-3FF6C788C0F7}</Project>
+      <Name>MedProject.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

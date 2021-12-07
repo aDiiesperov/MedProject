@@ -25,18 +25,31 @@ namespace MedProject.BusinessLogic.Services
             return list.Select(i => i.MapToDto()).ToList();
         }
 
-        public async Task RequestMedicationsAsync(int userId, MedicationRequestDto request)
+        public async Task RequestMedicationsAsync(int userId, MedicationRequestDto model)
         {
-            var model = new RequestMedicationsSPParams()
+            var sPParams = new RequestMedicationsSPParams()
             {
                 UserId = userId,
-                MedicationId = request.MedicationId,
-                PharmacyId = request.PharmacyId,
-                Quantity = request.Quantity,
+                MedicationId = model.MedicationId,
+                PharmacyId = model.PharmacyId,
+                Quantity = model.Quantity,
                 Status = OrderStatus.Requested,
             };
 
-            await this.repository.RequestMedicationsAsync(model);
+            await this.repository.RequestMedicationsAsync(sPParams);
+        }
+
+        public async Task CancelMedicationsAsync(int userId, MedicationCancelDto model)
+        {
+            var sPParams = new CancelMedicationsSPParams()
+            {
+                UserId = userId,
+                MedicationId = model.MedicationId,
+                PharmacyId = model.PharmacyId,
+                Status = OrderStatus.Canceled,
+            };
+
+            await this.repository.CancelMedicationsAsync(sPParams);
         }
     }
 }

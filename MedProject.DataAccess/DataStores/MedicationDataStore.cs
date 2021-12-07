@@ -2,7 +2,6 @@
 using MedProject.DataAccess.DataStores.Models;
 using MedProject.DataAccess.Models;
 using MedProject.Shared.Exceptions;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -38,17 +37,17 @@ namespace MedProject.DataAccess.DataStores
             }
         }
 
-        public async Task RequestMedicationsAsync(RequestMedicationsSPParams model)
+        public async Task RequestMedicationsAsync(RequestMedicationsSPParams sPParams)
         {
             try
             {
                 var spBuilder = adoManager.CreateSPBuilder("RequestMedications");
 
-                spBuilder.AddParameter("@userId", model.UserId);
-                spBuilder.AddParameter("@medicationId", model.MedicationId);
-                spBuilder.AddParameter("@pharmacyId", model.PharmacyId);
-                spBuilder.AddParameter("@quantity", model.Quantity);
-                spBuilder.AddParameter("@status", model.Status);
+                spBuilder.AddParameter("@userId", sPParams.UserId);
+                spBuilder.AddParameter("@medicationId", sPParams.MedicationId);
+                spBuilder.AddParameter("@pharmacyId", sPParams.PharmacyId);
+                spBuilder.AddParameter("@quantity", sPParams.Quantity);
+                spBuilder.AddParameter("@status", sPParams.Status);
 
                 using (var executor = spBuilder.Build())
                 {
@@ -58,6 +57,28 @@ namespace MedProject.DataAccess.DataStores
             catch
             {
                 throw new MedException("There was an error requesting medications");
+            }
+        }
+
+        public async Task CancelMedicationsAsync(CancelMedicationsSPParams sPParams)
+        {
+            try
+            {
+                var spBuilder = adoManager.CreateSPBuilder("CancelMedications");
+
+                spBuilder.AddParameter("@userId", sPParams.UserId);
+                spBuilder.AddParameter("@medicationId", sPParams.MedicationId);
+                spBuilder.AddParameter("@pharmacyId", sPParams.PharmacyId);
+                spBuilder.AddParameter("@status", sPParams.Status);
+
+                using (var executor = spBuilder.Build())
+                {
+                    await executor.ExecuteNonQueryAsync();
+                }
+            }
+            catch
+            {
+                throw new MedException("There was an error canceling medications");
             }
         }
     }

@@ -9,6 +9,10 @@ tr {
   display: flex;
 }
 
+tbody > tr {
+  min-height: 48px;
+}
+
 th {
   vertical-align: middle;
 }

@@ -31,6 +31,7 @@ export const actions = {
 
   MED_LOAD_MEDS_TO_ORDER: "MED_LOAD_MEDS_TO_ORDER",
   MED_ACTION_REQUEST: "MED_ACTION_REQUEST",
+  MED_ACTION_CANCEL: "MED_ACTION_CANCEL",
 };
 
 export const mutations = {
@@ -46,4 +47,5 @@ export const mutations = {
   AUTH_LOGOUT: "AUTH_LOGOUT",
 
   MED_SET_MEDS_TO_ORDER: "MED_SET_MEDS_TO_ORDER",
+  MED_CHANGE_STATUS: "MED_CHANGE_STATUS",
 };

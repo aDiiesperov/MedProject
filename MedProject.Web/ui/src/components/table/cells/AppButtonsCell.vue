@@ -1,7 +1,7 @@
 <template>
   <div>
-    <app-loader v-if="isLoading" />
-    <div v-else>
+    <app-loader :isSmall="true" v-if="isLoading" />
+    <div class="btn-group" v-else>
       <button
         v-for="btnConfig in btnConfigs"
         :key="btnConfig.name"
@@ -41,7 +41,10 @@ export default {
   methods: {
     onClick(btnConfig) {
       this.isLoading = true;
-      btnConfig.onClick().finally(() => (this.isLoading = false));
+      btnConfig.onClick().finally(() => {
+        this.isLoading = false;
+        this.btnConfigs = this.config.buttonsResolver(this.item);
+      });
     },
   },
 };
