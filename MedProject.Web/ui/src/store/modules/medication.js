@@ -28,6 +28,14 @@ const actions = {
     const medsToOrder = await MedicationService.getMedicationsToOrder();
     commit($M.MED_SET_MEDS_TO_ORDER, medsToOrder);
   },
+  async [$A.MED_LOAD_MEDS_INFO]({ commit }) {
+    const medsInfo = await MedicationService.getMedicationsInfo();
+    commit($M.MED_SET_MEDS_INFO, medsInfo);
+  },
+  [$A.MED_RESET]({ commit }) {
+    commit($M.MED_SET_MEDS_TO_ORDER, []);
+    commit($M.MED_SET_MEDS_INFO, []);
+  },
   async [$A.MED_ACTION_REQUEST]({ commit }, data) {
     await MedicationService.requestMedications(data);
     commit($M.MED_CHANGE_STATUS, { ...data, status: "Requested" }); // TODO: add enum and change model on back-end
@@ -35,10 +43,6 @@ const actions = {
   async [$A.MED_ACTION_CANCEL]({ commit }, data) {
     await MedicationService.cancelMedications(data);
     commit($M.MED_CHANGE_STATUS, { ...data, status: "Canceled" }); // TODO: add enum and change model on back-end
-  },
-  async [$A.MED_LOAD_MEDS_INFO]({ commit }) {
-    const medsInfo = await MedicationService.getMedicationsInfo();
-    commit($M.MED_SET_MEDS_INFO, medsInfo);
   },
 };
 
