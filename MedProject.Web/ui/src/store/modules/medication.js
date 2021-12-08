@@ -10,6 +10,9 @@ const mutations = {
   [$M.MED_SET_MEDS_TO_ORDER](state, medsToOrder) {
     state.medsToOrder = medsToOrder;
   },
+  [$M.MED_SET_MEDS_INFO](state, medsInfo) {
+    state.medsInfo = medsInfo;
+  },
   [$M.MED_CHANGE_STATUS](state, data) {
     const model = state.medsToOrder.find(
       (m) =>
@@ -33,11 +36,18 @@ const actions = {
     await MedicationService.cancelMedications(data);
     commit($M.MED_CHANGE_STATUS, { ...data, status: "Canceled" }); // TODO: add enum and change model on back-end
   },
+  async [$A.MED_LOAD_MEDS_INFO]({ commit }) {
+    const medsInfo = await MedicationService.getMedicationsInfo();
+    commit($M.MED_SET_MEDS_INFO, medsInfo);
+  },
 };
 
 const getters = {
   [$G.MED_MEDS_TO_ORDER](state) {
     return state.medsToOrder;
+  },
+  [$G.MED_MEDS_INFO](state) {
+    return state.medsInfo;
   },
 };
 

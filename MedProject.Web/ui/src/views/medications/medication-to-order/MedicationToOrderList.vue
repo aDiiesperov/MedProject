@@ -11,7 +11,7 @@ import AppTable from "@components/table/AppTable.vue";
 import AppLoader from "@components/AppLoader.vue";
 import { actions as $A, getters as $G } from "@store/types";
 import { mapGetters } from "vuex";
-import { actionResolver } from "./action.resolver";
+import { actionsToOrderResolver } from "./actions-to-order.resolver";
 
 export default {
   components: {
@@ -24,15 +24,18 @@ export default {
       {
         prop: "Pharmacy",
         width: 700,
+        sortable: true,
       },
       {
         prop: "Medication",
         width: 700,
+        sortable: true,
       },
       {
         name: "Total Quantity",
         prop: "TotalQuantity",
         width: 400,
+        sortable: true,
       },
       {
         name: "Status",
@@ -44,7 +47,7 @@ export default {
         name: "Actions",
         width: 700,
         type: "button",
-        buttonsResolver: actionResolver,
+        buttonsResolver: actionsToOrderResolver,
       },
     ],
     isLoading: false,
@@ -52,7 +55,6 @@ export default {
   computed: {
     ...mapGetters({
       medsToOrder: $G.MED_MEDS_TO_ORDER,
-      filters: $G.QUERY_BAR_LIST,
     }),
   },
   mounted() {

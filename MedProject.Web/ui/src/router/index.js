@@ -27,7 +27,7 @@ const routes = [
       },
       {
         path: "medications",
-        component: () => import("@views/medications/MedicationList"),
+        component: () => import("@views/medications/MedicationRoot"),
       },
     ],
     meta: {

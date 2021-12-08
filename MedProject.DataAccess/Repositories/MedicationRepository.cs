@@ -27,5 +27,10 @@ namespace MedProject.DataAccess.Repositories
         {
             return this.store.CancelMedicationsAsync(sPParams);
         }
+
+        public Task<IList<GetMedicationsInfoSPResult>> GetMedicationsInfoAsync()
+        {
+            return this.store.GetMedicationsInfoAsync();
+        }
     }
 }

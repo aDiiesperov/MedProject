@@ -25,4 +25,10 @@ export class MedicationService {
       })
       .then((response) => response.data);
   }
+
+  static getMedicationsInfo() {
+    return axios
+      .get(`${process.env.VUE_APP_API_URL}/medication/medications-info`)
+      .then((response) => response.data);
+  }
 }

@@ -46,11 +46,11 @@ namespace MedProject.DataAccess
             {
                 var propType = prop.PropertyType;
 
-                if (propType.IsEnumerable())
+                if (propType.IsGenericCollection())
                 {
                     AdoHelper.PopulateEnumerable(obj, prop, reader, tablePrefix);
                 }
-                else if (propType.IsNavigationClass())
+                else if (propType.IsClass())
                 {
                     AdoHelper.PopulateClass(obj, prop, reader, tablePrefix);
                 }
@@ -107,7 +107,7 @@ namespace MedProject.DataAccess
         {
             var itemType = list.GetType().GetGenericArguments().Single();
             var itemProps = itemType.GetProperties()
-                                .Where(p => !p.PropertyType.IsEnumerable() && !p.PropertyType.IsNavigationClass());
+                                .Where(p => !p.PropertyType.IsGenericCollection() && !p.PropertyType.IsClass());
 
             foreach (var item in list)
             {

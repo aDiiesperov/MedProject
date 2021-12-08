@@ -49,7 +49,6 @@ export default {
         sortable: true,
       },
       {
-        prop: "PharmacyName",
         name: "Pharmacies",
         component: PharmaciesCell,
         width: 1000,

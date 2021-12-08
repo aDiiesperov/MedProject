@@ -1,5 +1,5 @@
-import store from "../../store";
-import { actions as $A } from "../../store/types";
+import store from "../../../store";
+import { actions as $A } from "../../../store/types";
 
 async function requestMeds(item) {
   const quantity = +prompt("How much medication do you want to order?", 0);
@@ -14,7 +14,7 @@ async function requestMeds(item) {
   }
 }
 
-export function actionResolver(item) {
+export function actionsToOrderResolver(item) {
   switch (item.Status?.toLowerCase()) {
     case "requested":
       return [

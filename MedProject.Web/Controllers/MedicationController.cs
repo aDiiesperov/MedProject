@@ -3,7 +3,6 @@ using MedProject.BusinessLogic.Interfaces;
 using MedProject.Web.Extensions;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.ModelBinding;
 
 namespace MedProject.Web.Controllers
 {
@@ -41,15 +40,6 @@ namespace MedProject.Web.Controllers
         }
 
         [HttpPatch]
-        [Authorize(Roles = "Pharmaciest")]
-        [Route("cancel")]
-        public async Task<IHttpActionResult> CancelMedications([QueryString] int userId, [FromBody] MedicationCancelDto model)
-        {
-            await this.medicationService.CancelMedicationsAsync(userId, model);
-            return this.Ok();
-        }
-
-        [HttpPatch]
         [Authorize(Roles = "Patient")]
         [Route("cancel")]
         public async Task<IHttpActionResult> CancelMedications([FromBody] MedicationCancelDto model)
@@ -58,6 +48,15 @@ namespace MedProject.Web.Controllers
 
             await this.medicationService.CancelMedicationsAsync(userId, model);
             return this.Ok();
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Pharmacist")]
+        [Route("medications-info")]
+        public async Task<IHttpActionResult> GetMedicationsInfo()
+        {
+            var list = await this.medicationService.GetMedicationsInfoAsync();
+            return this.Ok(list);
         }
     }
 }

@@ -75,6 +75,7 @@
     <Compile Include="DataStores\BaseDataStore.cs" />
     <Compile Include="DataStores\MedicationDataStore.cs" />
     <Compile Include="DataStores\Models\CancelMedicationsSPParams.cs" />
+    <Compile Include="DataStores\Models\GetMedicationsInfoSPResult.cs" />
     <Compile Include="DataStores\Models\GetMedicationsToOrderSPResult.cs" />
     <Compile Include="DataStores\Models\GetUserByLoginSPResult.cs" />
     <Compile Include="DataStores\Models\GetUsersByRoleSPResult.cs" />

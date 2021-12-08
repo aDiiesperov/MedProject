@@ -51,5 +51,11 @@ namespace MedProject.BusinessLogic.Services
 
             await this.repository.CancelMedicationsAsync(sPParams);
         }
+
+        public async Task<IList<MedicationInfoDto>> GetMedicationsInfoAsync()
+        {
+            var list = await this.repository.GetMedicationsInfoAsync();
+            return list.Select(i => i.MapToDto()).ToList();
+        }
     }
 }

@@ -12,5 +12,7 @@ namespace MedProject.DataAccess.Interfaces
         Task RequestMedicationsAsync(RequestMedicationsSPParams sPParams);
 
         Task CancelMedicationsAsync(CancelMedicationsSPParams sPParams);
+
+        Task<IList<GetMedicationsInfoSPResult>> GetMedicationsInfoAsync();
     }
 }

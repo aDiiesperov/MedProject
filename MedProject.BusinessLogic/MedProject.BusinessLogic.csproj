@@ -66,13 +66,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dtos\MedicationCancelDto.cs" />
-    <Compile Include="Dtos\MedicationRequestDto.cs" />
-    <Compile Include="Dtos\MedicationToOrderDto.cs" />
-    <Compile Include="Dtos\MedRoleDto.cs" />
-    <Compile Include="Dtos\MedUserDto.cs" />
-    <Compile Include="Dtos\PatientDto.cs" />
-    <Compile Include="Dtos\PatientPharmacyDto.cs" />
+    <Compile Include="Dtos\Medications\ItemOrderInfoDto.cs" />
+    <Compile Include="Dtos\Medications\MedicationCancelDto.cs" />
+    <Compile Include="Dtos\Medications\MedicationInfoDto.cs" />
+    <Compile Include="Dtos\Medications\MedicationRequestDto.cs" />
+    <Compile Include="Dtos\Medications\MedicationToOrderDto.cs" />
+    <Compile Include="Dtos\Users\MedRoleDto.cs" />
+    <Compile Include="Dtos\Users\MedUserDto.cs" />
+    <Compile Include="Dtos\Patients\PatientDto.cs" />
+    <Compile Include="Dtos\Patients\PatientPharmacyDto.cs" />
     <Compile Include="Dtos\PharmacyDto.cs" />
     <Compile Include="Interfaces\ICrudService.cs" />
     <Compile Include="Interfaces\IMedicationService.cs" />
@@ -100,5 +102,6 @@
       <Name>MedProject.DataAccess</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

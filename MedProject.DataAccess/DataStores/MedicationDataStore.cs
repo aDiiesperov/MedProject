@@ -1,7 +1,9 @@
 ﻿using MedProject.DataAccess.DataStores.AdoUtils;
 using MedProject.DataAccess.DataStores.Models;
+using MedProject.DataAccess.Enums;
 using MedProject.DataAccess.Models;
 using MedProject.Shared.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -79,6 +81,25 @@ namespace MedProject.DataAccess.DataStores
             catch
             {
                 throw new MedException("There was an error canceling medications");
+            }
+        }
+
+        public async Task<IList<GetMedicationsInfoSPResult>> GetMedicationsInfoAsync()
+        {
+            try
+            {
+                var spBuilder = adoManager.CreateSPBuilder("GetMedicationsInfo");
+
+                spBuilder.AddParameter("@requestedStatus", OrderStatus.Requested);
+
+                using (var executor = spBuilder.Build())
+                {
+                    return await executor.ReadAllAsync<GetMedicationsInfoSPResult>();
+                }
+            }
+            catch
+            {
+                return null;
             }
         }
     }
