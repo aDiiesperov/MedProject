@@ -1,11 +1,11 @@
 ﻿using MedProject.BusinessLogic.Dtos;
-using MedProject.DataAccess.Models;
+using MedProject.DataAccess.DataStores.Models;
 
 namespace MedProject.BusinessLogic.Mappers
 {
     internal static class PharmacyMapper
     {
-        public static PharmacyDto MapToDto(this Pharmacy model)
+        public static PharmacyDto MapToDto(this GetAllPharmaciesSPResult model)
         {
             return new PharmacyDto()
             {

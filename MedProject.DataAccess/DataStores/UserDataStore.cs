@@ -1,20 +1,20 @@
 ﻿using MedProject.DataAccess.DataStores.AdoUtils;
+using MedProject.DataAccess.DataStores.Interfaces;
 using MedProject.DataAccess.DataStores.Models;
-using MedProject.DataAccess.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MedProject.DataAccess.DataStores
 {
-    internal class UserDataStore : BaseDataStore<MedUser>
+    internal class UserDataStore : BaseDataStore, IUserDataStore
     {
         public UserDataStore(AdoManager adoManager) : base(adoManager)
         {
         }
 
-        public override Task<IList<MedUser>> GetAllAsync()
+        public Task<IList<GetAllMedUsersSPResult>> GetAllAsync()
         {
-            return this.adoManager.GetAllByProcAsync<MedUser>("GetAllMedUsers");
+            return this.adoManager.GetAllByProcAsync<GetAllMedUsersSPResult>("GetAllMedUsers");
         }
 
         public async Task<IList<GetUsersByRoleSPResult>> GetByRoleAsync(string role)

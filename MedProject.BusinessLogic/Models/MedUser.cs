@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MedProject.DataAccess.Models
+namespace MedProject.BusinessLogic.Models
 {
     public class MedUser
     {

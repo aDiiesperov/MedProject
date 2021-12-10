@@ -1,6 +1,4 @@
-﻿using MedProject.DataAccess.Enums;
-
-namespace MedProject.DataAccess.DataStores.Models
+﻿namespace MedProject.DataAccess.DataStores.Models
 {
     public class OrderUpdateSPParams
     {
@@ -10,6 +8,6 @@ namespace MedProject.DataAccess.DataStores.Models
 
         public double? Available { get; set; }
 
-        public OrderStatus? Status { get; set; }
+        public byte? Status { get; set; }
     }
 }

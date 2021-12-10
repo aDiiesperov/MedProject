@@ -13,7 +13,7 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "MedProject.SqlDbScripts", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedProject.Services", "MedProject.Services\MedProject.Services.csproj", "{B4BD6060-1945-4915-A002-274F494747D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedProject.Shared", "MedProject.Shared\MedProject.Shared.csproj", "{335DAE7E-2773-4771-AE22-3FF6C788C0F7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedProject.Core", "MedProject.Shared\MedProject.Core.csproj", "{335DAE7E-2773-4771-AE22-3FF6C788C0F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

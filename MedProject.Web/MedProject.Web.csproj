@@ -218,7 +218,6 @@
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Controllers\PharmacyController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Extensions\UserExtensions.cs" />
     <Compile Include="Filters\MedExceptionFilter.cs" />
     <Compile Include="Global.asax.cs">
@@ -321,9 +320,9 @@
       <Project>{b4bd6060-1945-4915-a002-274f494747d0}</Project>
       <Name>MedProject.Services</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MedProject.Shared\MedProject.Shared.csproj">
+    <ProjectReference Include="..\MedProject.Shared\MedProject.Core.csproj">
       <Project>{335DAE7E-2773-4771-AE22-3FF6C788C0F7}</Project>
-      <Name>MedProject.Shared</Name>
+      <Name>MedProject.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

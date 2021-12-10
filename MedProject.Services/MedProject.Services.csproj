@@ -107,13 +107,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MedProject.DataAccess\MedProject.DataAccess.csproj">
-      <Project>{00f87c74-93b9-4850-8a23-17844f4c1409}</Project>
-      <Name>MedProject.DataAccess</Name>
+    <ProjectReference Include="..\MedProject.BusinessLogic\MedProject.BusinessLogic.csproj">
+      <Project>{308FAD25-FA80-4FAB-9040-192D1599A7BF}</Project>
+      <Name>MedProject.BusinessLogic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MedProject.Shared\MedProject.Shared.csproj">
+    <ProjectReference Include="..\MedProject.Shared\MedProject.Core.csproj">
       <Project>{335dae7e-2773-4771-ae22-3ff6c788c0f7}</Project>
-      <Name>MedProject.Shared</Name>
+      <Name>MedProject.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

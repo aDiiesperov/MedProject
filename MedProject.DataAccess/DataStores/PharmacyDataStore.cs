@@ -1,23 +1,23 @@
 ﻿using MedProject.DataAccess.DataStores.AdoUtils;
-using MedProject.DataAccess.Models;
-using System;
+using MedProject.DataAccess.DataStores.Interfaces;
+using MedProject.DataAccess.DataStores.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MedProject.DataAccess.DataStores
 {
-    internal class PharmacyDataStore : BaseDataStore<Pharmacy>
+    internal class PharmacyDataStore : BaseDataStore, IPharmacyDataStore
     {
         public PharmacyDataStore(AdoManager adoManager) : base(adoManager)
         {
         }
 
-        public override Task<IList<Pharmacy>> GetAllAsync()
+        public Task<IList<GetAllPharmaciesSPResult>> GetAllAsync()
         {
-            return this.adoManager.GetAllByProcAsync<Pharmacy>("GetAllPharmacies");
+            return this.adoManager.GetAllByProcAsync<GetAllPharmaciesSPResult>("GetAllPharmacies");
         }
 
-        public async Task<IList<Pharmacy>> GetAssignedAsync(int userId)
+        public async Task<IList<GetAllPharmaciesSPResult>> GetAssignedAsync(int userId)
         {
             try
             {
@@ -27,7 +27,7 @@ namespace MedProject.DataAccess.DataStores
 
                 using (var executor = spBuilder.Build())
                 {
-                    return await executor.ReadAllAsync<Pharmacy>();
+                    return await executor.ReadAllAsync<GetAllPharmaciesSPResult>();
                 }
             }
             catch

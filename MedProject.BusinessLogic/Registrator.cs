@@ -1,6 +1,6 @@
 ﻿using Autofac;
-using MedProject.BusinessLogic.Interfaces;
 using MedProject.BusinessLogic.Services;
+using MedProject.BusinessLogic.Services.Interfaces;
 
 namespace MedProject.BusinessLogic
 {

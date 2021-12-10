@@ -1,21 +1,15 @@
 ﻿using MedProject.DataAccess.DataStores.AdoUtils;
+using MedProject.DataAccess.DataStores.Interfaces;
 using MedProject.DataAccess.DataStores.Models;
-using MedProject.DataAccess.Enums;
-using MedProject.DataAccess.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MedProject.DataAccess.DataStores
 {
-    internal class MedicationDataStore : BaseDataStore<Medication>
+    internal class MedicationDataStore : BaseDataStore, IMedicationDataStore
     {
         public MedicationDataStore(AdoManager adoManager) : base(adoManager)
         {
-        }
-
-        public override Task<IList<Medication>> GetAllAsync()
-        {
-            throw new System.NotImplementedException();
         }
 
         public async Task<IList<GetMedicationsToOrderSPResult>> GetMedicationsToOrderAsync(int userId)
@@ -37,13 +31,13 @@ namespace MedProject.DataAccess.DataStores
             }
         }
 
-        public async Task<IList<GetMedicationsInfoSPResult>> GetMedicationsInfoAsync()
+        public async Task<IList<GetMedicationsInfoSPResult>> GetMedicationsInfoAsync(byte requestedStatus)
         {
             try
             {
                 var spBuilder = adoManager.CreateSPBuilder("GetMedicationsInfo");
 
-                spBuilder.AddParameter("@requestedStatus", OrderStatus.Requested);
+                spBuilder.AddParameter("@requestedStatus", requestedStatus);
 
                 using (var executor = spBuilder.Build())
                 {

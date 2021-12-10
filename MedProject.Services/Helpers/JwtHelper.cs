@@ -1,9 +1,8 @@
-﻿using MedProject.DataAccess.Models;
+﻿using MedProject.BusinessLogic.Models;
 using MedProject.Services.Extensions;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
 
 namespace MedProject.Services.Helpers
 {

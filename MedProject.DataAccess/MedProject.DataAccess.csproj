@@ -73,7 +73,13 @@
     <Compile Include="DataStores\AdoUtils\AdoSPBuilder.cs" />
     <Compile Include="DataStores\AdoUtils\AdoTypeHelper.cs" />
     <Compile Include="DataStores\BaseDataStore.cs" />
+    <Compile Include="DataStores\Interfaces\IMedicationDataStore.cs" />
+    <Compile Include="DataStores\Interfaces\IOrderDataStore.cs" />
+    <Compile Include="DataStores\Interfaces\IPharmacyDataStore.cs" />
+    <Compile Include="DataStores\Interfaces\IUserDataStore.cs" />
     <Compile Include="DataStores\MedicationDataStore.cs" />
+    <Compile Include="DataStores\Models\GetAllMedUsersSPResult.cs" />
+    <Compile Include="DataStores\Models\GetAllPharmaciesSPResult.cs" />
     <Compile Include="DataStores\Models\GetMedicationsInfoSPResult.cs" />
     <Compile Include="DataStores\Models\GetMedicationsToOrderSPResult.cs" />
     <Compile Include="DataStores\Models\GetUserByLoginSPResult.cs" />
@@ -84,38 +90,14 @@
     <Compile Include="DataStores\Models\OrderUpdateSPParams.cs" />
     <Compile Include="DataStores\OrderDataStore.cs" />
     <Compile Include="DataStores\PharmacyDataStore.cs" />
-    <Compile Include="Enums\OrderStatus.cs" />
-    <Compile Include="Interfaces\IMedicationRepository.cs" />
-    <Compile Include="Interfaces\IOrderRepository.cs" />
-    <Compile Include="Interfaces\IPharmacyRepository.cs" />
-    <Compile Include="Interfaces\IRepository.cs" />
-    <Compile Include="Interfaces\IUserRepository.cs" />
-    <Compile Include="Mapper\MedUserMapper.cs" />
-    <Compile Include="Models\Medication.cs" />
-    <Compile Include="Models\MedRole.cs" />
-    <Compile Include="Models\OrderItem.cs" />
-    <Compile Include="Models\Pharmacy.cs" />
-    <Compile Include="Models\MedUser.cs" />
-    <Compile Include="Models\State.cs" />
-    <Compile Include="Models\Stock.cs" />
+    <Compile Include="DataStores\Responses\DbResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registrator.cs" />
-    <Compile Include="Repositories\MedicationRepository.cs" />
-    <Compile Include="Repositories\OrderRepository.cs" />
-    <Compile Include="Repositories\PharmacyRepository.cs" />
-    <Compile Include="Repositories\Repository.cs" />
-    <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="DataStores\UserDataStore.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MedProject.Shared\MedProject.Shared.csproj">
-      <Project>{335DAE7E-2773-4771-AE22-3FF6C788C0F7}</Project>
-      <Name>MedProject.Shared</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

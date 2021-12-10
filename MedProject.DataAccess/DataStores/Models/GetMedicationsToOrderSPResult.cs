@@ -1,6 +1,4 @@
-﻿using MedProject.DataAccess.Enums;
-
-namespace MedProject.DataAccess.DataStores.Models
+﻿namespace MedProject.DataAccess.DataStores.Models
 {
     public class GetMedicationsToOrderSPResult
     {

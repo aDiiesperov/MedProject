@@ -1,20 +1,21 @@
-﻿using MedProject.BusinessLogic.Dtos;
-using MedProject.DataAccess.Models;
+﻿using MedProject.BusinessLogic.Models;
+using MedProject.DataAccess.DataStores.Models;
 using System.Linq;
 
 namespace MedProject.BusinessLogic.Mappers
 {
-    internal static class MedUserMapper
+    public static class MedUserMapper
     {
-        public static MedUserDto MapToDto(this MedUser model)
+        public static MedUser MapToEntity(this GetUserByLoginSPResult model)
         {
-            return new MedUserDto()
+            return new MedUser()
             {
                 Id = model.Id,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
-                StateCode = model.State.Abbreviation,
-                Roles = model.Roles.MapToDto().ToList(),
+                LoginName = model.LoginName,
+                PasswordHash = model.PasswordHash,
+                Roles = model.Roles.Select(r => new MedRole() { Id = r.Id, Name = r.Name }).ToList(),
             };
         }
     }

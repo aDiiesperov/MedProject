@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace MedProject.DataAccess.DataStores.AdoUtils
 {
-    internal class AdoManager
+    internal sealed class AdoManager
     {
         private readonly string connectionString;
 

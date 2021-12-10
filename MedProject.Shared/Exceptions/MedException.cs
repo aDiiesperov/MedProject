@@ -6,6 +6,8 @@ namespace MedProject.Shared.Exceptions
     {
         public int StatusCode { get; set; } = 400;
 
+        public int ErrorCode { get; set; }
+
         public MedException()
         {
         }

@@ -1,11 +1,11 @@
 ﻿using MedProject.BusinessLogic.Dtos;
 using System.Threading.Tasks;
 
-namespace MedProject.BusinessLogic.Interfaces
+namespace MedProject.BusinessLogic.Services.Interfaces
 {
     public interface IOrderService
     {
-        Task RequestAsync(int userId, MedicationRequestDto model);
+        Task QueryAsync(int userId, MedicationRequestDto model);
 
         Task CancelAsync(int userId, MedicationCancelDto model);
 

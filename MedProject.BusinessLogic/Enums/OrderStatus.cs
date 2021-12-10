@@ -1,4 +1,4 @@
-﻿namespace MedProject.DataAccess.Enums
+﻿namespace MedProject.BusinessLogic.Enums
 {
     public enum OrderStatus : byte
     {

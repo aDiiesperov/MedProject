@@ -1,6 +1,6 @@
-﻿using MedProject.DataAccess.Enums;
+﻿using MedProject.BusinessLogic.Enums;
 
-namespace MedProject.DataAccess.Models
+namespace MedProject.BusinessLogic.Models
 {
     public class OrderItem
     {

@@ -1,29 +1,29 @@
 ﻿using MedProject.BusinessLogic.Dtos;
-using MedProject.BusinessLogic.Interfaces;
+using MedProject.BusinessLogic.Services.Interfaces;
 using MedProject.BusinessLogic.Mappers;
-using MedProject.DataAccess.Interfaces;
-using MedProject.DataAccess.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MedProject.DataAccess.DataStores.Interfaces;
 
 namespace MedProject.BusinessLogic.Services
 {
-    internal class PharmacyService : CrudService<PharmacyDto, Pharmacy, IPharmacyRepository>, IPharmacyService
+    internal class PharmacyService : BaseService<IPharmacyDataStore>, IPharmacyService
     {
-        public PharmacyService(IPharmacyRepository repository) : base(repository)
+        public PharmacyService(IPharmacyDataStore store) : base(store)
         {
         }
 
         public async Task<IList<PharmacyDto>> GetAssignedAsync(int userId)
         {
-            var list = await this.repository.GetAssignedAsync(userId);
+            var list = await this.store.GetAssignedAsync(userId);
             return list.Select(p => p.MapToDto()).ToList();
         }
 
-        protected override PharmacyDto MapToDto(Pharmacy model)
+        public async Task<IList<PharmacyDto>> GetListAsync()
         {
-            return model.MapToDto();
+            var list = await this.store.GetAllAsync();
+            return list.Select(p => p.MapToDto()).ToList();
         }
     }
 }

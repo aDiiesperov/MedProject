@@ -1,6 +1,6 @@
 ﻿using MedProject.BusinessLogic.Dtos;
+using MedProject.BusinessLogic.Enums;
 using MedProject.DataAccess.DataStores.Models;
-using MedProject.DataAccess.Enums;
 using System;
 using System.Linq;
 

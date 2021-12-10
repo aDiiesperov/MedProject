@@ -1,10 +1,8 @@
 ﻿using MedProject.DataAccess.DataStores.AdoUtils;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace MedProject.DataAccess.DataStores
 {
-    internal abstract class BaseDataStore<TModel> where TModel : class
+    internal abstract class BaseDataStore
     {
         protected readonly AdoManager adoManager;
 
@@ -12,7 +10,5 @@ namespace MedProject.DataAccess.DataStores
         {
             this.adoManager = adoManager;
         }
-
-        public abstract Task<IList<TModel>> GetAllAsync();
     }
 }

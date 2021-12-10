@@ -1,14 +1,13 @@
 ﻿using MedProject.DataAccess.DataStores.Models;
-using MedProject.DataAccess.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MedProject.DataAccess.Interfaces
+namespace MedProject.DataAccess.DataStores.Interfaces
 {
-    public interface IMedicationRepository : IRepository<Medication>
+    public interface IMedicationDataStore
     {
         Task<IList<GetMedicationsToOrderSPResult>> GetMedicationsToOrderAsync(int userId);
 
-        Task<IList<GetMedicationsInfoSPResult>> GetMedicationsInfoAsync();
+        Task<IList<GetMedicationsInfoSPResult>> GetMedicationsInfoAsync(byte requestedStatus);
     }
 }

@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MedProject.BusinessLogic.Interfaces
+namespace MedProject.BusinessLogic.Services.Interfaces
 {
-    public interface IPharmacyService : ICrudService<PharmacyDto>
+    public interface IPharmacyService
     {
         Task<IList<PharmacyDto>> GetAssignedAsync(int userId);
+
+        Task<IList<PharmacyDto>> GetListAsync();
     }
 }

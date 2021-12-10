@@ -12,15 +12,9 @@ namespace MedProject.DataAccess
             var connectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
             builder.Register(c => new AdoManager(connectionString)).AsSelf();
 
-
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
                 .Where(t => t.Name.EndsWith("DataStore") && !t.IsAbstract)
-                .AsSelf();
-
-            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
-                .Where(t => t.Name.EndsWith("Repository") && !t.IsAbstract)
                 .AsImplementedInterfaces();
-
         }
     }
 }

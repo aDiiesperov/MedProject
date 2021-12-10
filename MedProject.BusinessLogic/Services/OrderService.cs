@@ -1,24 +1,21 @@
 ﻿using MedProject.BusinessLogic.Dtos;
-using MedProject.BusinessLogic.Interfaces;
+using MedProject.BusinessLogic.Enums;
+using MedProject.BusinessLogic.Services.Interfaces;
+using MedProject.DataAccess.DataStores.Interfaces;
 using MedProject.DataAccess.DataStores.Models;
-using MedProject.DataAccess.Enums;
-using MedProject.DataAccess.Interfaces;
 using MedProject.Shared.Exceptions;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace MedProject.BusinessLogic.Services
 {
-    internal class OrderService : IOrderService
+    internal class OrderService : BaseService<IOrderDataStore>, IOrderService
     {
-        private readonly IOrderRepository repository;
-
-        public OrderService(IOrderRepository repository)
+        public OrderService(IOrderDataStore store) : base(store)
         {
-            this.repository = repository;
         }
 
-        public async Task RequestAsync(int userId, MedicationRequestDto model)
+        public async Task QueryAsync(int userId, MedicationRequestDto model)
         {
             var order = await this.GetOrderAsync(userId, model.MedicationId, model.PharmacyId);
 
@@ -30,10 +27,10 @@ namespace MedProject.BusinessLogic.Services
                     MedicationId = model.MedicationId,
                     PharmacyId = model.PharmacyId,
                     Quantity = model.Quantity,
-                    Status = OrderStatus.Requested,
+                    Status = (byte)OrderStatus.Requested,
                 };
 
-                await this.repository.InsertAsync(createModel);
+                await this.store.InsertAsync(createModel);
             }
             else
             {
@@ -41,10 +38,10 @@ namespace MedProject.BusinessLogic.Services
                 {
                     Id = order.Id,
                     Quantity = model.Quantity,
-                    Status = OrderStatus.Requested,
+                    Status = (byte)OrderStatus.Requested,
                 };
 
-                await this.repository.UpdateAsync(updateModel);
+                await this.store.UpdateAsync(updateModel);
             }
 
 
@@ -63,16 +60,16 @@ namespace MedProject.BusinessLogic.Services
                 var updateModel = new OrderUpdateSPParams()
                 {
                     Id = order.Id,
-                    Status = OrderStatus.Canceled
+                    Status = (byte)OrderStatus.Canceled
                 };
 
-                await this.repository.UpdateAsync(updateModel);
+                await this.store.UpdateAsync(updateModel);
             }
         }
 
         private async Task<OrderGetAllByUserSPResult> GetOrderAsync(int userId, int medicationId, int pharmacyId)
         {
-            var orders = await this.repository.GetAllByUserAsync(userId);
+            var orders = await this.store.GetAllByUserAsync(userId);
             return orders.FirstOrDefault(order => order.MedicationId == medicationId &&
                                                             order.PharmacyId == pharmacyId);
         }
@@ -82,10 +79,10 @@ namespace MedProject.BusinessLogic.Services
             var updateModel = new OrderUpdateSPParams()
             {
                 Id = orderId,
-                Status = OrderStatus.Accepted
+                Status = (byte)OrderStatus.Accepted
             };
 
-            await this.repository.UpdateAsync(updateModel);
+            await this.store.UpdateAsync(updateModel);
         }
 
         public async Task CancelAsync(int orderId)
@@ -93,10 +90,10 @@ namespace MedProject.BusinessLogic.Services
             var updateModel = new OrderUpdateSPParams()
             {
                 Id = orderId,
-                Status = OrderStatus.Canceled
+                Status = (byte)OrderStatus.Canceled
             };
 
-            await this.repository.UpdateAsync(updateModel);
+            await this.store.UpdateAsync(updateModel);
         }
 
         public async Task NotifyPatientAsync(int orderId, double quantity)
@@ -105,10 +102,10 @@ namespace MedProject.BusinessLogic.Services
             {
                 Id = orderId,
                 Available = quantity,
-                Status = OrderStatus.Avaliable,
+                Status = (byte)OrderStatus.Avaliable,
             };
 
-            await this.repository.UpdateAsync(updateModel);
+            await this.store.UpdateAsync(updateModel);
         }
     }
 }

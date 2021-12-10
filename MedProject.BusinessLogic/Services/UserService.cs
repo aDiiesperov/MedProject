@@ -1,29 +1,30 @@
 ﻿using MedProject.BusinessLogic.Dtos;
-using MedProject.BusinessLogic.Interfaces;
+using MedProject.BusinessLogic.Services.Interfaces;
 using MedProject.BusinessLogic.Mappers;
-using MedProject.DataAccess.Interfaces;
-using MedProject.DataAccess.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MedProject.BusinessLogic.Models;
+using MedProject.DataAccess.DataStores.Interfaces;
 
 namespace MedProject.BusinessLogic.Services
 {
-    internal class UserService : CrudService<MedUserDto, MedUser, IUserRepository>, IUserService
+    internal class UserService : BaseService<IUserDataStore>, IUserService
     {
-        public UserService(IUserRepository repository) : base(repository)
+        public UserService(IUserDataStore store) : base(store)
         {
+        }
+
+        public async Task<MedUser> GetByLoginAsync(string loginName)
+        {
+            var user = await this.store.GetByLoginAsync(loginName);
+            return user.MapToEntity();
         }
 
         public async Task<IList<PatientDto>> GetPatientListAsync()
         {
-            var list = await this.repository.GetByRoleAsync("Patient");
+            var list = await this.store.GetByRoleAsync("Patient");
             return list.Select(i => i.MapToDto()).ToList();
-        }
-
-        protected override MedUserDto MapToDto(MedUser model)
-        {
-            return model.MapToDto();
         }
     }
 }

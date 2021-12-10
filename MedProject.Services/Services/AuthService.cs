@@ -1,5 +1,5 @@
-﻿using MedProject.DataAccess.Interfaces;
-using MedProject.DataAccess.Models;
+﻿using MedProject.BusinessLogic.Models;
+using MedProject.BusinessLogic.Services.Interfaces;
 using MedProject.Services.Extensions;
 using MedProject.Services.Helpers;
 using MedProject.Services.Interfaces;
@@ -12,19 +12,19 @@ namespace MedProject.Services.Services
 {
     internal class AuthService : IAuthService
     {
-        private readonly IUserRepository userRepository;
+        private readonly IUserService userService;
 
         private readonly AuthCacheManager authCache;
 
-        public AuthService(IUserRepository userRepository, AuthCacheManager authCache)
+        public AuthService(IUserService userService, AuthCacheManager authCache)
         {
-            this.userRepository = userRepository;
+            this.userService = userService;
             this.authCache = authCache;
         }
 
         public async Task<AuthenticateResponse> AuthenticateAsync(string login, string password)
         {
-            var user = await this.userRepository.GetByLoginAsync(login);
+            var user = await this.userService.GetByLoginAsync(login);
             if (user == null)
             {
                 return null;
@@ -61,7 +61,7 @@ namespace MedProject.Services.Services
                 }
 
                 var loginName = jwtToken.Claims.GetClaim(JwtRegisteredClaimNames.NameId);
-                var user = await this.userRepository.GetByLoginAsync(loginName);
+                var user = await this.userService.GetByLoginAsync(loginName);
                 if (user == null)
                 {
                     throw new MedException("Failed to refresh!"); ;

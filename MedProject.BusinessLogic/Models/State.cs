@@ -1,4 +1,4 @@
-﻿namespace MedProject.DataAccess.Models
+﻿namespace MedProject.BusinessLogic.Models
 {
     public class State
     {

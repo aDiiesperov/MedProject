@@ -1,4 +1,4 @@
-﻿using MedProject.DataAccess.Models;
+﻿using MedProject.BusinessLogic.Models;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;

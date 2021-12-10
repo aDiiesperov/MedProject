@@ -1,5 +1,5 @@
 ﻿using MedProject.BusinessLogic.Dtos;
-using MedProject.BusinessLogic.Interfaces;
+using MedProject.BusinessLogic.Services.Interfaces;
 using MedProject.Web.Extensions;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -23,7 +23,7 @@ namespace MedProject.Web.Controllers
         {
             var userId = this.User.GetNameId();
 
-            await this.orderService.RequestAsync(userId, model);
+            await this.orderService.QueryAsync(userId, model);
             return this.Ok();
         }
 

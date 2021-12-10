@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MedProject.BusinessLogic.Interfaces
+namespace MedProject.BusinessLogic.Services.Interfaces
 {
     public interface IMedicationService
     {

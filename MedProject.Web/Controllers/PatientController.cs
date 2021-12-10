@@ -1,4 +1,4 @@
-﻿using MedProject.BusinessLogic.Interfaces;
+﻿using MedProject.BusinessLogic.Services.Interfaces;
 using System.Threading.Tasks;
 using System.Web.Http;
 

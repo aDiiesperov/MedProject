@@ -1,31 +1,30 @@
 ﻿using MedProject.BusinessLogic.Dtos;
-using MedProject.BusinessLogic.Interfaces;
+using MedProject.BusinessLogic.Services.Interfaces;
 using MedProject.BusinessLogic.Mappers;
-using MedProject.DataAccess.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MedProject.BusinessLogic.Enums;
+using MedProject.DataAccess.DataStores.Interfaces;
 
 namespace MedProject.BusinessLogic.Services
 {
-    internal class MedicationService : IMedicationService
+    internal class MedicationService : BaseService<IMedicationDataStore>,  IMedicationService
     {
-        private readonly IMedicationRepository repository;
-
-        public MedicationService(IMedicationRepository repository)
+        public MedicationService(IMedicationDataStore store) : base(store)
         {
-            this.repository = repository;
         }
 
         public async Task<IList<MedicationToOrderDto>> GetMedicationsToOrderAsync(int userId)
         {
-            var list = await this.repository.GetMedicationsToOrderAsync(userId);
+            var list = await this.store.GetMedicationsToOrderAsync(userId);
             return list.Select(i => i.MapToDto()).ToList();
         }
 
         public async Task<IList<MedicationInfoDto>> GetMedicationsInfoAsync()
         {
-            var list = await this.repository.GetMedicationsInfoAsync();
+            var requestedStatus = (byte)OrderStatus.Requested;
+            var list = await this.store.GetMedicationsInfoAsync(requestedStatus);
             return list.Select(i => i.MapToDto()).ToList();
         }
     }

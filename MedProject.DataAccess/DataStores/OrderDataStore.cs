@@ -1,21 +1,16 @@
 ﻿using MedProject.DataAccess.DataStores.AdoUtils;
+using MedProject.DataAccess.DataStores.Interfaces;
 using MedProject.DataAccess.DataStores.Models;
-using MedProject.DataAccess.Models;
-using MedProject.Shared.Exceptions;
+using MedProject.DataAccess.DataStores.Responses;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MedProject.DataAccess.DataStores
 {
-    internal class OrderDataStore : BaseDataStore<OrderItem>
+    internal class OrderDataStore : BaseDataStore, IOrderDataStore
     {
         public OrderDataStore(AdoManager adoManager) : base(adoManager)
         {
-        }
-
-        public override Task<IList<OrderItem>> GetAllAsync()
-        {
-            throw new System.NotImplementedException();
         }
 
         public async Task<OrderGetByIdSPResult> GetByIdAsync(int id)
@@ -33,6 +28,7 @@ namespace MedProject.DataAccess.DataStores
             }
             catch
             {
+                // TODO: LOG EXCEPTION
                 return null;
             }
         }
@@ -52,11 +48,12 @@ namespace MedProject.DataAccess.DataStores
             }
             catch
             {
+                // TODO: LOG EXCEPTION
                 return null;
             }
         }
 
-        public async Task UpdateAsync(OrderUpdateSPParams sPParams)
+        public async Task<DbResult> UpdateAsync(OrderUpdateSPParams sPParams)
         {
             try
             {
@@ -70,15 +67,16 @@ namespace MedProject.DataAccess.DataStores
                 using (var executor = spBuilder.Build())
                 {
                     await executor.ExecuteNonQueryAsync();
+                    return DbResult.Success;
                 }
             }
             catch
             {
-                throw new MedException("An error occurred while updating order");
+                return DbResult.DatabaseError; // throw new MedException("An error occurred while updating order");
             }
         }
 
-        public async Task InsertAsync(OrderInsertSPParams sPParams)
+        public async Task<DbResult> InsertAsync(OrderInsertSPParams sPParams)
         {
             try
             {
@@ -94,11 +92,12 @@ namespace MedProject.DataAccess.DataStores
                 using (var executor = spBuilder.Build())
                 {
                     await executor.ExecuteNonQueryAsync();
+                    return DbResult.Success;
                 }
             }
             catch
             {
-                throw new MedException("An error occurred while inserting order");
+                return DbResult.DatabaseError; // throw new MedException("An error occurred while inserting order");
             }
         }
     }
