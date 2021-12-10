@@ -41,7 +41,13 @@ export default {
         name: "Status",
         width: 400,
         valueResolver: (item) =>
-          item.Status ? `${item.Status} (${item.OrderedQuantity})` : "—",
+          item.Status
+            ? `${item.Status} (${
+                item.Status === "Avaliable"
+                  ? item.Available
+                  : item.OrderedQuantity
+              })`
+            : "—",
       },
       {
         name: "Actions",

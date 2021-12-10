@@ -214,6 +214,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MedicationController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Controllers\PharmacyController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
@@ -249,6 +250,7 @@
     <Content Include="ui\src\components\table\AppPagination.vue" />
     <Content Include="ui\src\components\table\AppTable.scss" />
     <Content Include="ui\src\components\table\AppTable.vue" />
+    <Content Include="ui\src\components\table\cells\AppButtonsCell.vue" />
     <Content Include="ui\src\core\NavBar.vue" />
     <Content Include="ui\src\directives\index.js" />
     <Content Include="ui\src\directives\role-only.directive.js" />
@@ -268,6 +270,7 @@
     <Content Include="ui\src\services\auth.service.js" />
     <Content Include="ui\src\services\index.js" />
     <Content Include="ui\src\services\medication.service.js" />
+    <Content Include="ui\src\services\order.service.js" />
     <Content Include="ui\src\services\patient.service.js" />
     <Content Include="ui\src\services\pharmacy.service.js" />
     <Content Include="ui\src\services\setupInterceptors.js" />
@@ -282,8 +285,10 @@
     <Content Include="ui\src\views\Home.vue" />
     <Content Include="ui\src\views\login\Login.scss" />
     <Content Include="ui\src\views\login\Login.vue" />
+    <Content Include="ui\src\views\medications\medication-info\ActionsOrdersCell.vue" />
+    <Content Include="ui\src\views\medications\medication-info\MedicationInfoList.vue" />
     <Content Include="ui\src\views\medications\medication-to-order\actions-to-order.resolver.js" />
-    <Content Include="ui\src\views\medications\MedicationList.vue" />
+    <Content Include="ui\src\views\medications\medication-to-order\MedicationToOrderList.vue" />
     <Content Include="ui\src\views\patients\PatientList.vue" />
     <Content Include="ui\src\views\patients\PharmaciesCell.vue" />
     <Content Include="ui\src\views\pharmacies\PharmacyList.vue" />
@@ -305,11 +310,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="ui\src\components\table\cells\AppButtonsCell.vue" />
-    <Content Include="ui\src\views\medications\medication-info\ActionsOrdersCell.vue" />
-    <Content Include="ui\src\views\medications\medication-info\MedicationInfoList.vue" />
-    <Content Include="ui\src\views\medications\medication-to-order\MedicationToOrderList.vue" />
-    <Content Include="ui\src\views\medications\MedicationRoot.vue" />
+    <Content Include="ui\src\views\medications\Home.vue" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MedProject.BusinessLogic\MedProject.BusinessLogic.csproj">

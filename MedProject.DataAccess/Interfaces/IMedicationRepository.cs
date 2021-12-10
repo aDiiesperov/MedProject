@@ -9,10 +9,6 @@ namespace MedProject.DataAccess.Interfaces
     {
         Task<IList<GetMedicationsToOrderSPResult>> GetMedicationsToOrderAsync(int userId);
 
-        Task RequestMedicationsAsync(RequestMedicationsSPParams sPParams);
-
-        Task CancelMedicationsAsync(CancelMedicationsSPParams sPParams);
-
         Task<IList<GetMedicationsInfoSPResult>> GetMedicationsInfoAsync();
     }
 }

@@ -1,5 +1,4 @@
-﻿using MedProject.BusinessLogic.Dtos;
-using MedProject.BusinessLogic.Interfaces;
+﻿using MedProject.BusinessLogic.Interfaces;
 using MedProject.Web.Extensions;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -26,28 +25,6 @@ namespace MedProject.Web.Controllers
 
             var list = await this.medicationService.GetMedicationsToOrderAsync(userId);
             return this.Ok(list);
-        }
-
-        [HttpPost]
-        [Authorize(Roles = "Patient")]
-        [Route("request")]
-        public async Task<IHttpActionResult> RequestMedications([FromBody] MedicationRequestDto model)
-        {
-            var userId = this.User.GetNameId();
-
-            await this.medicationService.RequestMedicationsAsync(userId, model);
-            return this.Ok();
-        }
-
-        [HttpPatch]
-        [Authorize(Roles = "Patient")]
-        [Route("cancel")]
-        public async Task<IHttpActionResult> CancelMedications([FromBody] MedicationCancelDto model)
-        {
-            var userId = this.User.GetNameId();
-
-            await this.medicationService.CancelMedicationsAsync(userId, model);
-            return this.Ok();
         }
 
         [HttpGet]

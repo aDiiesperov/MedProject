@@ -78,6 +78,7 @@
     <Compile Include="Dtos\PharmacyDto.cs" />
     <Compile Include="Interfaces\ICrudService.cs" />
     <Compile Include="Interfaces\IMedicationService.cs" />
+    <Compile Include="Interfaces\IOrderService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Interfaces\IPharmacyService.cs" />
     <Compile Include="Mappers\MedicationMapper.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Registrator.cs" />
     <Compile Include="Services\CrudService.cs" />
     <Compile Include="Services\MedicationService.cs" />
+    <Compile Include="Services\OrderService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Services\PharmacyService.cs" />
   </ItemGroup>
@@ -100,6 +102,10 @@
     <ProjectReference Include="..\MedProject.DataAccess\MedProject.DataAccess.csproj">
       <Project>{00F87C74-93B9-4850-8A23-17844F4C1409}</Project>
       <Name>MedProject.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MedProject.Shared\MedProject.Shared.csproj">
+      <Project>{335DAE7E-2773-4771-AE22-3FF6C788C0F7}</Project>
+      <Name>MedProject.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

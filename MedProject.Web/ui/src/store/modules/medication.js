@@ -1,4 +1,4 @@
-import { MedicationService } from "@services";
+import { MedicationService, OrderService } from "@services";
 import { getters as $G, actions as $A, mutations as $M } from "../types";
 
 const state = () => ({
@@ -21,6 +21,18 @@ const mutations = {
     model.Status = data.status;
     model.OrderedQuantity = data.Quantity ?? model.OrderedQuantity;
   },
+  [$M.MED_REMOVE_ORDER](state, orderId) {
+    console.dir(orderId);
+    for (var medInfo of state.medsInfo) {
+      var orderIndex = medInfo.ItemOrders.findIndex(
+        (order) => order.Id === orderId
+      );
+      if (orderIndex != -1) {
+        medInfo.ItemOrders.splice(orderIndex, 1);
+        break;
+      }
+    }
+  },
 };
 
 const actions = {
@@ -36,13 +48,25 @@ const actions = {
     commit($M.MED_SET_MEDS_TO_ORDER, []);
     commit($M.MED_SET_MEDS_INFO, []);
   },
-  async [$A.MED_ACTION_REQUEST]({ commit }, data) {
-    await MedicationService.requestMedications(data);
+  async [$A.MED_ACTION_USER_REQUEST]({ commit }, data) {
+    await OrderService.requestByUser(data);
     commit($M.MED_CHANGE_STATUS, { ...data, status: "Requested" }); // TODO: add enum and change model on back-end
   },
-  async [$A.MED_ACTION_CANCEL]({ commit }, data) {
-    await MedicationService.cancelMedications(data);
+  async [$A.MED_ACTION_USER_CANCEL]({ commit }, data) {
+    await OrderService.cancelByUser(data);
     commit($M.MED_CHANGE_STATUS, { ...data, status: "Canceled" }); // TODO: add enum and change model on back-end
+  },
+  async [$A.MED_ACTION_ACCEPT]({ commit }, orderId) {
+    await OrderService.accept(orderId);
+    commit($M.MED_REMOVE_ORDER, orderId);
+  },
+  async [$A.MED_ACTION_CANCEL]({ commit }, orderId) {
+    await OrderService.cancel(orderId);
+    commit($M.MED_REMOVE_ORDER, orderId);
+  },
+  async [$A.MED_ACTION_NOTIFY]({ commit }, data) {
+    await OrderService.notify(data.orderId, data.quantity);
+    commit($M.MED_REMOVE_ORDER, data.orderId);
   },
 };
 

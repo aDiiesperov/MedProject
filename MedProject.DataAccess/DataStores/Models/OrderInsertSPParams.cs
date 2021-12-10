@@ -2,7 +2,7 @@
 
 namespace MedProject.DataAccess.DataStores.Models
 {
-    public class CancelMedicationsSPParams
+    public class OrderInsertSPParams
     {
         public int UserId { get; set; }
 
@@ -10,6 +10,10 @@ namespace MedProject.DataAccess.DataStores.Models
 
         public int PharmacyId { get; set; }
 
-        public OrderStatus Status { get; set; }
+        public double? Quantity { get; set; }
+
+        public double? Available { get; set; }
+
+        public OrderStatus? Status { get; set; }
     }
 }

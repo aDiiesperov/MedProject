@@ -12,6 +12,7 @@ namespace MedProject.BusinessLogic
             builder.RegisterType<PharmacyService>().As<IPharmacyService>();
             builder.RegisterType<UserService>().As<IUserService>();
             builder.RegisterType<MedicationService>().As<IMedicationService>();
+            builder.RegisterType<OrderService>().As<IOrderService>();
         }
     }
 }

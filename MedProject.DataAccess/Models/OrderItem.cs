@@ -14,7 +14,7 @@ namespace MedProject.DataAccess.Models
 
         public double Quantity { get; set; }
 
-        public OrderStatus OrderStatus { get; set; }
+        public OrderStatus Status { get; set; }
 
         public double? Available { get; set; }
     }

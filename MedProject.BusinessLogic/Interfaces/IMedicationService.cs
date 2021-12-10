@@ -8,10 +8,6 @@ namespace MedProject.BusinessLogic.Interfaces
     {
         Task<IList<MedicationToOrderDto>> GetMedicationsToOrderAsync(int userId);
 
-        Task RequestMedicationsAsync(int userId, MedicationRequestDto request);
-
-        Task CancelMedicationsAsync(int userId, MedicationCancelDto model);
-
         Task<IList<MedicationInfoDto>> GetMedicationsInfoAsync();
     }
 }

@@ -10,7 +10,7 @@ async function requestMeds(item) {
       MedicationId: item.MedicationId,
       PharmacyId: item.PharmacyId,
     };
-    await store.dispatch($A.MED_ACTION_REQUEST, data);
+    await store.dispatch($A.MED_ACTION_USER_REQUEST, data);
   }
 }
 
@@ -31,7 +31,7 @@ export function actionsToOrderResolver(item) {
               MedicationId: item.MedicationId,
               PharmacyId: item.PharmacyId,
             };
-            await store.dispatch($A.MED_ACTION_CANCEL, data);
+            await store.dispatch($A.MED_ACTION_USER_CANCEL, data);
           },
         },
       ];
