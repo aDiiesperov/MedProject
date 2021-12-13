@@ -265,6 +265,7 @@
     <Content Include="ui\src\helpers\user.helper.js" />
     <Content Include="ui\src\index.scss" />
     <Content Include="ui\src\main.js" />
+    <Content Include="ui\src\router\auth.guard.js" />
     <Content Include="ui\src\router\index.js" />
     <Content Include="ui\src\services\auth.service.js" />
     <Content Include="ui\src\services\index.js" />
@@ -284,6 +285,7 @@
     <Content Include="ui\src\views\Home.vue" />
     <Content Include="ui\src\views\login\Login.scss" />
     <Content Include="ui\src\views\login\Login.vue" />
+    <Content Include="ui\src\views\medications\Home.vue" />
     <Content Include="ui\src\views\medications\medication-info\ActionsOrdersCell.vue" />
     <Content Include="ui\src\views\medications\medication-info\MedicationInfoList.vue" />
     <Content Include="ui\src\views\medications\medication-to-order\actions-to-order.resolver.js" />
@@ -309,7 +311,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="ui\src\views\medications\Home.vue" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MedProject.BusinessLogic\MedProject.BusinessLogic.csproj">
