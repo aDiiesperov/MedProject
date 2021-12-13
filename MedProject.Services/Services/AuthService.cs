@@ -22,15 +22,15 @@ namespace MedProject.Services.Services
             this.authCache = authCache;
         }
 
-        public async Task<AuthenticateResponse> AuthenticateAsync(string login, string password)
+        public async Task<AuthenticateResponse> AuthenticateAsync(AuthenticateRequest request)
         {
-            var user = await this.userService.GetByLoginAsync(login);
+            var user = await this.userService.GetByLoginAsync(request.Login);
             if (user == null)
             {
                 return null;
             }
 
-            if (PasswordHelper.VerifyHashedPassword(user.PasswordHash, password))
+            if (PasswordHelper.VerifyHashedPassword(user.PasswordHash, request.Password))
             {
                 var issuer = ConfigAuthHelper.GetIssuer();
                 var JWTSecret = ConfigAuthHelper.GetJWTSecret();

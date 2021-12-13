@@ -1,18 +1,12 @@
-import axios from "axios";
+import { queryEndpoint } from "./helper";
 
 export default {
   login(data) {
-    return axios
-      .get(`${process.env.VUE_APP_API_URL}/auth/login`, {
-        params: data,
-      })
-      .then((response) => response.data);
+    const options = { data: data };
+    return queryEndpoint("POST", "/auth/login", options);
   },
   refreshToken(token) {
-    return axios
-      .get(`${process.env.VUE_APP_API_URL}/auth/refresh-token`, {
-        params: { token },
-      })
-      .then((response) => response.data);
+    const options = { params: { token } };
+    return queryEndpoint("POST", "/auth/refresh-token", options);
   },
 };

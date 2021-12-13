@@ -1,39 +1,25 @@
-import axios from "axios";
+import { queryEndpoint } from "./helper";
 
 export default {
   requestByUser(data) {
-    return axios
-      .post(`${process.env.VUE_APP_API_URL}/order/request`, {
-        ...data,
-      })
-      .then((response) => response.data);
+    const options = { data };
+    return queryEndpoint("POST", "/order/request", options);
   },
   cancelByUser(data) {
-    return axios
-      .patch(`${process.env.VUE_APP_API_URL}/order/cancel`, {
-        ...data,
-      })
-      .then((response) => response.data);
+    const options = { data };
+    return queryEndpoint("PATCH", "/order/cancel", options);
   },
   accept(orderId) {
-    return axios
-      .patch(`${process.env.VUE_APP_API_URL}/order/accept/${orderId}`)
-      .then((response) => response.data);
+    return queryEndpoint("PATCH", `/order/accept/${orderId}`);
   },
   cancel(orderId) {
-    return axios
-      .patch(`${process.env.VUE_APP_API_URL}/order/cancel/${orderId}`)
-      .then((response) => response.data);
+    return queryEndpoint("PATCH", `/order/cancel/${orderId}`);
   },
   notify(orderId, quantity) {
-    return axios
-      .patch(
-        `${process.env.VUE_APP_API_URL}/order/notify/${orderId}`,
-        quantity,
-        {
-          headers: { "Content-Type": "application/json" },
-        }
-      )
-      .then((response) => response.data);
+    const options = {
+      data: quantity,
+      headers: { "Content-Type": "application/json" },
+    };
+    return queryEndpoint("PATCH", `/order/notify/${orderId}`, options);
   },
 };

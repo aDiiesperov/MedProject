@@ -1,9 +1,7 @@
-import axios from "axios";
+import { queryEndpoint } from "./helper";
 
 export default {
   getList() {
-    return axios
-      .get(`${process.env.VUE_APP_API_URL}/patient`)
-      .then((response) => response.data);
+    return queryEndpoint("GET", "/patient");
   },
 };

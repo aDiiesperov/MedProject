@@ -268,7 +268,9 @@
     <Content Include="ui\src\router\auth.guard.js" />
     <Content Include="ui\src\router\index.js" />
     <Content Include="ui\src\services\auth.service.js" />
+    <Content Include="ui\src\services\helper.js" />
     <Content Include="ui\src\services\index.js" />
+    <Content Include="ui\src\services\instance.js" />
     <Content Include="ui\src\services\medication.service.js" />
     <Content Include="ui\src\services\order.service.js" />
     <Content Include="ui\src\services\patient.service.js" />

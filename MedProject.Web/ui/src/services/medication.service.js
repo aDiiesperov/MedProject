@@ -1,16 +1,11 @@
-import axios from "axios";
+import { queryEndpoint } from "./helper";
 
 export default {
   getMedicationsToOrder(data) {
-    return axios
-      .get(`${process.env.VUE_APP_API_URL}/medication/medications-to-order`, {
-        params: data,
-      })
-      .then((response) => response.data);
+    const options = { data };
+    return queryEndpoint("GET", "/medication/medications-to-order", options);
   },
   getMedicationsInfo() {
-    return axios
-      .get(`${process.env.VUE_APP_API_URL}/medication/medications-info`)
-      .then((response) => response.data);
+    return queryEndpoint("GET", "/medication/medications-info");
   },
 };

@@ -1,4 +1,5 @@
 ﻿using MedProject.Services.Interfaces;
+using MedProject.Services.Models;
 using MedProject.Shared.Exceptions;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -17,12 +18,12 @@ namespace MedProject.Web.Controllers
             this.authService = authService;
         }
 
-        [HttpGet]
+        [HttpPost]
         [AllowAnonymous]
         [Route("login")]
-        public async Task<IHttpActionResult> Login([QueryString] string login, [QueryString] string password)
+        public async Task<IHttpActionResult> Login([FromBody] AuthenticateRequest request)
         {
-            var res = await this.authService.AuthenticateAsync(login, password);
+            var res = await this.authService.AuthenticateAsync(request);
 
             if (res == null)
                 throw new MedException("Login or password is incorrect!");
@@ -30,7 +31,7 @@ namespace MedProject.Web.Controllers
             return this.Ok(res);
         }
 
-        [HttpGet]
+        [HttpPost]
         [AllowAnonymous]
         [Route("refresh-token")]
         public async Task<IHttpActionResult> RefreshToken([QueryString] string token)

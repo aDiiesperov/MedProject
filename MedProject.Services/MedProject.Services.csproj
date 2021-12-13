@@ -94,6 +94,7 @@
     <Compile Include="Helpers\ConfigAuthHelper.cs" />
     <Compile Include="Helpers\JwtHelper.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Models\AuthenticateRequest.cs" />
     <Compile Include="Models\AuthenticateResponse.cs" />
     <Compile Include="Interfaces\IAuthService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
