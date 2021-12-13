@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export class PharmacyService {
-  static getList() {
+export default {
+  getList() {
     return axios
       .get(`${process.env.VUE_APP_API_URL}/pharmacy`)
       .then((response) => response.data);
-  }
-}
+  },
+};

@@ -1,7 +1,7 @@
-import { AuthService } from "@services";
 import { getters as $G, actions as $A, mutations as $M } from "../types";
 import router from "../../router";
 import { JwtParser } from "@helpers";
+import { AuthService } from "@services";
 
 function getUserData(token) {
   let payload = JwtParser.parsePayload(token);

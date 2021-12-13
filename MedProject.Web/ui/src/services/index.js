@@ -1,6 +1,5 @@
-export * from "./pharmacy.service";
-export * from "./patient.service";
-export * from "./auth.service";
-export * from "./medication.service";
-export * from "./setupInterceptors";
-export * from "./order.service";
+export * as PharmacyService from "./pharmacy.service";
+export * as PatientService from "./patient.service";
+export * as AuthService from "./auth.service";
+export * as MedicationService from "./medication.service";
+export * as OrderService from "./order.service";
