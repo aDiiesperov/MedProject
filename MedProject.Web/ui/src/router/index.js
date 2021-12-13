@@ -1,13 +1,11 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "@views/Home.vue";
-import store from "../store";
-import { getters as $G } from "../store/types";
+import authGuard from "./auth.guard";
 
 Vue.use(VueRouter);
 
 const routes = [
-  // TODO: future features: add some auth guard
   {
     path: "/",
     name: "Home",
@@ -55,15 +53,6 @@ const router = new VueRouter({
   routes,
 });
 
-router.beforeEach((to, from, next) => {
-  const isAuthenticated = store.getters[$G.AUTH_IS_AUTHENTICATED];
-  const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
-
-  if (!isAuthenticated && requiresAuth) {
-    next({ name: "Login" });
-  } else {
-    next();
-  }
-});
+router.beforeEach(authGuard);
 
 export default router;
