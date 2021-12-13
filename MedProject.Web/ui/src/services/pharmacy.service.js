@@ -1,4 +1,4 @@
-import { queryEndpoint } from "./helper";
+import { queryEndpoint } from "./utils/helper";
 
 export default {
   getList() {
