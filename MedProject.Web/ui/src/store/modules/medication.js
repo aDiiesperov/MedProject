@@ -1,4 +1,5 @@
-import { MedicationService, OrderService } from "@services";
+import medicationService from "@/services/medication.service";
+import orderService from "@/services/order.service";
 import { getters as $G, actions as $A, mutations as $M } from "../types";
 
 const state = () => ({
@@ -22,7 +23,6 @@ const mutations = {
     model.OrderedQuantity = data.Quantity ?? model.OrderedQuantity;
   },
   [$M.MED_REMOVE_ORDER](state, orderId) {
-    console.dir(orderId);
     for (var medInfo of state.medsInfo) {
       var orderIndex = medInfo.ItemOrders.findIndex(
         (order) => order.Id === orderId
@@ -37,11 +37,11 @@ const mutations = {
 
 const actions = {
   async [$A.MED_LOAD_MEDS_TO_ORDER]({ commit }) {
-    const medsToOrder = await MedicationService.getMedicationsToOrder();
+    const medsToOrder = await medicationService.getMedicationsToOrder();
     commit($M.MED_SET_MEDS_TO_ORDER, medsToOrder);
   },
   async [$A.MED_LOAD_MEDS_INFO]({ commit }) {
-    const medsInfo = await MedicationService.getMedicationsInfo();
+    const medsInfo = await medicationService.getMedicationsInfo();
     commit($M.MED_SET_MEDS_INFO, medsInfo);
   },
   [$A.MED_RESET]({ commit }) {
@@ -49,23 +49,23 @@ const actions = {
     commit($M.MED_SET_MEDS_INFO, []);
   },
   async [$A.MED_ACTION_USER_REQUEST]({ commit }, data) {
-    await OrderService.requestByUser(data);
+    await orderService.requestByUser(data);
     commit($M.MED_CHANGE_STATUS, { ...data, status: "Requested" }); // TODO: add enum and change model on back-end
   },
   async [$A.MED_ACTION_USER_CANCEL]({ commit }, data) {
-    await OrderService.cancelByUser(data);
+    await orderService.cancelByUser(data);
     commit($M.MED_CHANGE_STATUS, { ...data, status: "Canceled" }); // TODO: add enum and change model on back-end
   },
   async [$A.MED_ACTION_ACCEPT]({ commit }, orderId) {
-    await OrderService.accept(orderId);
+    await orderService.accept(orderId);
     commit($M.MED_REMOVE_ORDER, orderId);
   },
   async [$A.MED_ACTION_CANCEL]({ commit }, orderId) {
-    await OrderService.cancel(orderId);
+    await orderService.cancel(orderId);
     commit($M.MED_REMOVE_ORDER, orderId);
   },
   async [$A.MED_ACTION_NOTIFY]({ commit }, data) {
-    await OrderService.notify(data.orderId, data.quantity);
+    await orderService.notify(data.orderId, data.quantity);
     commit($M.MED_REMOVE_ORDER, data.orderId);
   },
 };

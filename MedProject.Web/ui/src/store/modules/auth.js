@@ -1,7 +1,7 @@
 import { getters as $G, actions as $A, mutations as $M } from "../types";
 import router from "../../router";
 import { JwtParser } from "@helpers";
-import { AuthService } from "@services";
+import authService from "@/services/auth.service";
 
 function getUserData(token) {
   let payload = JwtParser.parsePayload(token);
@@ -57,7 +57,7 @@ const actions = {
   async [$A.AUTH_LOGIN]({ commit, state }, data) {
     if (state.accessToken) return;
     try {
-      const res = await AuthService.login(data);
+      const res = await authService.login(data);
       commit($M.AUTH_SUCCESS_LOGIN, res);
       router.push({ path: "/" });
     } catch (e) {
@@ -72,7 +72,7 @@ const actions = {
   },
   async [$A.AUTH_SILENT_REFRESH]({ commit, state }) {
     if (!state.refreshToken) throw new Error("Refresh token is empty!");
-    const res = await AuthService.refreshToken(state.refreshToken);
+    const res = await authService.refreshToken(state.refreshToken);
     commit($M.AUTH_SUCCESS_LOGIN, res);
   },
   [$A.AUTH_LOGOUT]({ commit, state }) {
